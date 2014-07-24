@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "StartTimeViewController.h"
+#import "ParseQueryViewController.h"
 #import <Parse/Parse.h>
 
 @interface MainViewController ()
@@ -41,16 +42,15 @@
 }
 
 - (IBAction)onDriverButton:(id)sender {
-    
-    NSLog(@"I am a driver!");
+    // NSLog(@"I am a driver!");
     StartTimeViewController *startTimeVC = [[StartTimeViewController alloc] init];
-    
     [self presentViewController:startTimeVC animated:YES completion:nil];
 }
 
 - (IBAction)onYpoolerButton:(id)sender {
-    
-    NSLog(@"I am looking for a Ypool");
+    // NSLog(@"I am looking for a Ypool");
+    ParseQueryViewController *parseVC = [[ParseQueryViewController alloc] init];
+    [self presentViewController:parseVC animated:YES completion:nil];
 }
 
 - (IBAction)onLogout:(id)sender {

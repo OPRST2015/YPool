@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		42422E3C19818C60004CF068 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42422E3A19818C60004CF068 /* LoginViewController.m */; };
 		42422E3D19818C60004CF068 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42422E3B19818C60004CF068 /* LoginViewController.xib */; };
+		42422E411981B9A0004CF068 /* ParseQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42422E3F1981B9A0004CF068 /* ParseQueryViewController.m */; };
+		42422E421981B9A0004CF068 /* ParseQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42422E401981B9A0004CF068 /* ParseQueryViewController.xib */; };
 		4C266EF5198178ED00118E2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266EF4198178ED00118E2E /* Foundation.framework */; };
 		4C266EF7198178ED00118E2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266EF6198178ED00118E2E /* CoreGraphics.framework */; };
 		4C266EF9198178ED00118E2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266EF8198178ED00118E2E /* UIKit.framework */; };
@@ -42,6 +44,9 @@
 		42422E3919818C60004CF068 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		42422E3A19818C60004CF068 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		42422E3B19818C60004CF068 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		42422E3E1981B9A0004CF068 /* ParseQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseQueryViewController.h; sourceTree = "<group>"; };
+		42422E3F1981B9A0004CF068 /* ParseQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseQueryViewController.m; sourceTree = "<group>"; };
+		42422E401981B9A0004CF068 /* ParseQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParseQueryViewController.xib; sourceTree = "<group>"; };
 		4C266EF1198178ED00118E2E /* YPool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YPool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C266EF4198178ED00118E2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C266EF6198178ED00118E2E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -178,6 +183,9 @@
 				42422E3919818C60004CF068 /* LoginViewController.h */,
 				42422E3A19818C60004CF068 /* LoginViewController.m */,
 				42422E3B19818C60004CF068 /* LoginViewController.xib */,
+				42422E3E1981B9A0004CF068 /* ParseQueryViewController.h */,
+				42422E3F1981B9A0004CF068 /* ParseQueryViewController.m */,
+				42422E401981B9A0004CF068 /* ParseQueryViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 				4C266EFF198178ED00118E2E /* InfoPlist.strings in Resources */,
 				4C266F271981790B00118E2E /* MainViewController.xib in Resources */,
 				4C266F07198178ED00118E2E /* Images.xcassets in Resources */,
+				42422E421981B9A0004CF068 /* ParseQueryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */,
+				42422E411981B9A0004CF068 /* ParseQueryViewController.m in Sources */,
 				4C266F01198178ED00118E2E /* main.m in Sources */,
 				4C266F261981790B00118E2E /* MainViewController.m in Sources */,
 				4C266F05198178ED00118E2E /* TDLAppDelegate.m in Sources */,
