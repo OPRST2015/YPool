@@ -1,18 +1,18 @@
 //
-//  TLDPoolSelectionViewController.m
+//  PoolSelectionViewController.m
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "TDLPoolSelectionViewController.h"
+#import "PoolSelectionViewController.h"
 
-@interface TDLPoolSelectionViewController ()
+@interface PoolSelectionViewController ()
 
 @end
 
-@implementation TDLPoolSelectionViewController
+@implementation PoolSelectionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

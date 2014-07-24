@@ -1,23 +1,23 @@
 //
-//  TDLPassengerViewController.m
+//  PassengerViewController.m
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "TDLPassengerViewController.h"
-#import "TDLPoolCellTableViewCell.h"
-#import "TDLPoolSelectionViewController.h"
+#import "PassengerViewController.h"
+#import "PoolCellTableViewCell.h"
+#import "PoolSelectionViewController.h"
 
-@interface TDLPassengerViewController ()
+@interface PassengerViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *poolTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *poolMapImageView;
 
 @end
 
-@implementation TDLPassengerViewController
+@implementation PassengerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +64,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TDLPoolCellTableViewCell *cell;
+    PoolCellTableViewCell *cell;
     NSDictionary *pool;
     NSDictionary *passengers;
     cell = [tableView dequeueReusableCellWithIdentifier:@"poolCell" forIndexPath:indexPath];
@@ -126,7 +126,7 @@
 - (IBAction)poolSelectedAction:(id)sender {
     if (self.poolSelected) {
         // allow more interaction of selected route
-        TDLPoolSelectionViewController *poolSelectionViewController = [[TDLPoolSelectionViewController alloc] initWithNibName:@"TLDPoolSelectionViewController"  bundle:nil];
+        PoolSelectionViewController *poolSelectionViewController = [[PoolSelectionViewController alloc] initWithNibName:@"TLDPoolSelectionViewController"  bundle:nil];
         poolSelectionViewController.selectedPool = self.poolSelected;
 
         [self presentViewController:poolSelectionViewController animated:YES completion:nil];

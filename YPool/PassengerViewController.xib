@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TDLPassengerViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PassengerViewController">
             <connections>
                 <outlet property="poolMapImageView" destination="yXx-Ax-27X" id="itL-nP-flp"/>
                 <outlet property="poolTableView" destination="MEF-q6-DnD" id="DSx-dQ-h5x"/>

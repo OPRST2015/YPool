@@ -1,5 +1,5 @@
 //
-//  TDLPassengerViewController.h
+//  PassengerViewController.h
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDLPassengerViewController : UIViewController
+@interface PassengerViewController : UIViewController
 
 @property (strong, nonatomic) NSArray *poolData;
 @property (strong, nonatomic) NSDictionary *poolSelected;

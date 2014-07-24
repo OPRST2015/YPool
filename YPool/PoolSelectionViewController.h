@@ -1,5 +1,5 @@
 //
-//  TLDPoolSelectionViewController.h
+//  PoolSelectionViewController.h
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDLPoolSelectionViewController : UIViewController
+@interface PoolSelectionViewController : UIViewController
 
 @property (weak, nonatomic) NSDictionary *selectedPool;
 

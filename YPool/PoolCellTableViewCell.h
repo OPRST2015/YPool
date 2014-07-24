@@ -1,5 +1,5 @@
 //
-//  TDLPoolCellTableViewCell.h
+//  PoolCellTableViewCell.h
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDLPoolCellTableViewCell : UITableViewCell
+@interface PoolCellTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *poolDestination;
 @property (weak, nonatomic) IBOutlet UILabel *poolTime;
