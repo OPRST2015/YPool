@@ -1,18 +1,18 @@
 //
-//  TDLPassengerViewController.m
+//  TLDPoolSelectionViewController.m
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "TDLPassengerViewController.h"
+#import "TDLPoolSelectionViewController.h"
 
-@interface TDLPassengerViewController ()
+@interface TDLPoolSelectionViewController ()
 
 @end
 
-@implementation TDLPassengerViewController
+@implementation TDLPoolSelectionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
