@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 
 - (IBAction)onSignUp:(id)sender;
+
 @end
 
 @implementation SignupViewController
@@ -34,6 +35,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIGestureRecognizer *tapper = [[UITapGestureRecognizer alloc]
+              initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,5 +74,9 @@
         }
     }];
     
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
 }
 @end
