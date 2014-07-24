@@ -8,6 +8,9 @@
 
 #import "TDLAppDelegate.h"
 #import "MainViewController.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
+
 
 @implementation TDLAppDelegate
 
@@ -15,8 +18,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MainViewController * mvc = [[MainViewController alloc]init];
-    self.window.rootViewController = mvc;
+    [Parse setApplicationId:@"utKZRP9UmjkB016urpoLsNlg5c4Pe33hJCBUQQiX" clientKey:@"hQaL8uaWff8Dr1Ky5Cs34MS2cxg5T0Wr5voXyg8U"];
+    
+    [self selectRootViewController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRootViewController) name:@"UserLoginStateChanged" object:nil];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -48,6 +54,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) selectRootViewController {
+    PFUser *currentUser = [PFUser currentUser];
+
+    
+    if (currentUser) {
+        self.window.rootViewController = [[MainViewController alloc] init];
+        
+    } else {
+        self.window.rootViewController = [[LoginViewController alloc] init];
+    }
 }
 
 @end

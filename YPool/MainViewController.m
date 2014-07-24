@@ -7,10 +7,12 @@
 //
 
 #import "MainViewController.h"
+#import <Parse/Parse.h>
 
 @interface MainViewController ()
 - (IBAction)onDriverButton:(id)sender;
 - (IBAction)onYpoolerButton:(id)sender;
+- (IBAction)onLogout:(id)sender;
 
 @end
 
@@ -46,4 +48,13 @@
     
     NSLog(@"I am looking for a Ypool");
 }
+
+- (IBAction)onLogout:(id)sender {
+
+    [PFUser logOut];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];
+}
+
+
+
 @end
