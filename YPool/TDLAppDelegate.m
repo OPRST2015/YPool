@@ -8,6 +8,9 @@
 
 #import "TDLAppDelegate.h"
 #import "MainViewController.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
+
 
 @implementation TDLAppDelegate
 
@@ -15,8 +18,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MainViewController * mvc = [[MainViewController alloc]init];
-    self.window.rootViewController = mvc;
+    
+    [Parse setApplicationId:@"ttpedmQfBzcXueernRefpYjuT1zsbkov8hTE1GZS"
+                  clientKey:@"rLG4YXRDkZ3WUBZ2F1kfiok1pgY9ZziCh5xzdauY"];
+    
+    
+    [self selectRootViewController];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRootViewController) name:@"UserLoginStateChanged" object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRootViewController) name:@"RoutePublished" object:nil];
+    
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -31,7 +44,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -48,6 +61,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) selectRootViewController {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    
+    if (currentUser) {
+        self.window.rootViewController = [[MainViewController alloc] init];
+        
+    } else {
+        self.window.rootViewController = [[LoginViewController alloc] init];
+    }
 }
 
 @end

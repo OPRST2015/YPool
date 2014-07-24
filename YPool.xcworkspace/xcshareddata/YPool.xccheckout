@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4637FD1B-6162-4707-8488-FB9A0A2B4DBF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YPool</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AF39A55F-0FC2-41CB-9619-61BD49E14F23</key>
+		<string>https://github.com/sudipshah/YPool.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YPool.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AF39A55F-0FC2-41CB-9619-61BD49E14F23</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sudipshah/YPool.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AF39A55F-0FC2-41CB-9619-61BD49E14F23</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AF39A55F-0FC2-41CB-9619-61BD49E14F23</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YPool</string>
+		</dict>
+	</array>
+</dict>
+</plist>
