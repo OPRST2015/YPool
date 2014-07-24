@@ -21,6 +21,8 @@
 		4C266F1A198178ED00118E2E /* YPoolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F19198178ED00118E2E /* YPoolTests.m */; };
 		4C266F261981790B00118E2E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F241981790B00118E2E /* MainViewController.m */; };
 		4C266F271981790B00118E2E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F251981790B00118E2E /* MainViewController.xib */; };
+		4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F2919817AEE00118E2E /* StartTimeViewController.m */; };
+		4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		4C266F231981790B00118E2E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		4C266F241981790B00118E2E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4C266F251981790B00118E2E /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		4C266F2819817AEE00118E2E /* StartTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTimeViewController.h; sourceTree = "<group>"; };
+		4C266F2919817AEE00118E2E /* StartTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTimeViewController.m; sourceTree = "<group>"; };
+		4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +117,11 @@
 		4C266EFA198178ED00118E2E /* YPool */ = {
 			isa = PBXGroup;
 			children = (
+				4C266F2D19817AFC00118E2E /* View Controllers */,
 				4C266F03198178ED00118E2E /* TDLAppDelegate.h */,
 				4C266F04198178ED00118E2E /* TDLAppDelegate.m */,
 				4C266F06198178ED00118E2E /* Images.xcassets */,
 				4C266EFB198178ED00118E2E /* Supporting Files */,
-				4C266F231981790B00118E2E /* MainViewController.h */,
-				4C266F241981790B00118E2E /* MainViewController.m */,
-				4C266F251981790B00118E2E /* MainViewController.xib */,
 			);
 			path = YPool;
 			sourceTree = "<group>";
@@ -150,6 +153,19 @@
 				4C266F16198178ED00118E2E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C266F2D19817AFC00118E2E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C266F231981790B00118E2E /* MainViewController.h */,
+				4C266F241981790B00118E2E /* MainViewController.m */,
+				4C266F251981790B00118E2E /* MainViewController.xib */,
+				4C266F2819817AEE00118E2E /* StartTimeViewController.h */,
+				4C266F2919817AEE00118E2E /* StartTimeViewController.m */,
+				4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */,
 				4C266EFF198178ED00118E2E /* InfoPlist.strings in Resources */,
 				4C266F271981790B00118E2E /* MainViewController.xib in Resources */,
 				4C266F07198178ED00118E2E /* Images.xcassets in Resources */,
@@ -249,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */,
 				4C266F01198178ED00118E2E /* main.m in Sources */,
 				4C266F261981790B00118E2E /* MainViewController.m in Sources */,
 				4C266F05198178ED00118E2E /* TDLAppDelegate.m in Sources */,

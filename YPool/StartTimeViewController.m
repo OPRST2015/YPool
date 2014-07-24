@@ -1,20 +1,18 @@
 //
-//  MainViewController.m
+//  StartTimeViewController.m
 //  YPool
 //
 //  Created by Sudip Shah on 7/24/14.
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "StartTimeViewController.h"
 
-@interface MainViewController ()
-- (IBAction)onDriverButton:(id)sender;
-- (IBAction)onYpoolerButton:(id)sender;
+@interface StartTimeViewController ()
 
 @end
 
-@implementation MainViewController
+@implementation StartTimeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,13 +35,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)onDriverButton:(id)sender {
-    
-    NSLog(@"I am a driver!");
-}
-
-- (IBAction)onYpoolerButton:(id)sender {
-    
-    NSLog(@"I am looking for a Ypool");
-}
 @end
