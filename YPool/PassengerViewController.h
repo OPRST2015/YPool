@@ -10,4 +10,7 @@
 
 @interface TDLPassengerViewController : UIViewController
 
+@property (strong, nonatomic) NSArray *poolData;
+@property (strong, nonatomic) NSDictionary *poolSelected;
+
 @end
