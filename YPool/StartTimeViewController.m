@@ -7,8 +7,12 @@
 //
 
 #import "StartTimeViewController.h"
+#import <Parse/Parse.h>
 
 @interface StartTimeViewController ()
+- (IBAction)saveRoute:(id)sender;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
+@property (weak, nonatomic) IBOutlet UITextField *numberOfSeatsField;
 
 @end
 
@@ -27,12 +31,38 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.numberOfSeatsField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
+
+- (IBAction)saveRoute:(id)sender {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    PFObject *route = [PFObject objectWithClassName:@"publishedRoutes"];
+    route[@"driver"] = currentUser;
+    
+    NSDate* currentDate = [NSDate date];
+    
+    route[@"startTime"] = [self.startTimePicker date];
+    route[@"routeDetail"] = @"this is the route detail";
+    route[@"numberOfSeats"] = @([self.numberOfSeatsField.text intValue]);
+    
+    [route saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // success
+        NSLog(@"saved route");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
+    }];
 }
 
 @end

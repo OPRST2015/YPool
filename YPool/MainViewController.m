@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "StartTimeViewController.h"
 #import <Parse/Parse.h>
 
 @interface MainViewController ()
@@ -42,6 +43,9 @@
 - (IBAction)onDriverButton:(id)sender {
     
     NSLog(@"I am a driver!");
+    StartTimeViewController *startTimeVC = [[StartTimeViewController alloc] init];
+    
+    [self presentViewController:startTimeVC animated:YES completion:nil];
 }
 
 - (IBAction)onYpoolerButton:(id)sender {

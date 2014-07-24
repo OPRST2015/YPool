@@ -174,10 +174,10 @@
 				4C266F251981790B00118E2E /* MainViewController.xib */,
 				4C266F2819817AEE00118E2E /* StartTimeViewController.h */,
 				4C266F2919817AEE00118E2E /* StartTimeViewController.m */,
+				4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */,
 				42422E3919818C60004CF068 /* LoginViewController.h */,
 				42422E3A19818C60004CF068 /* LoginViewController.m */,
 				42422E3B19818C60004CF068 /* LoginViewController.xib */,
-				4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

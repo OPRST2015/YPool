@@ -24,6 +24,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRootViewController) name:@"UserLoginStateChanged" object:nil];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRootViewController) name:@"RoutePublished" object:nil];
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

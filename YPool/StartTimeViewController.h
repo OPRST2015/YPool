@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartTimeViewController : UIViewController
+@interface StartTimeViewController : UIViewController <UITextFieldDelegate>
 
 @end
