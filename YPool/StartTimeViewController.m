@@ -31,6 +31,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIGestureRecognizer *tapper = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
+    
     self.numberOfSeatsField.delegate = self;
 }
 
@@ -40,11 +45,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return NO;
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender {
+    [self.view endEditing:YES];
 }
-
 
 - (IBAction)saveRoute:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
@@ -79,5 +82,11 @@
     }];
     
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
+
 
 @end

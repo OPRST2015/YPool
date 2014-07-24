@@ -34,7 +34,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.passwordTextField.delegate = self;
+    
+    UIGestureRecognizer *tapper = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,10 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return NO;
-}
 
 - (IBAction)onSignup:(id)sender {
     
@@ -71,6 +72,10 @@
 //            NSLog(@"failed sign-up., %@", error);
 //        }
 //    }];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)onLogin:(id)sender {
