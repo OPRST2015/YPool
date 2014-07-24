@@ -18,7 +18,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [Parse setApplicationId:@"utKZRP9UmjkB016urpoLsNlg5c4Pe33hJCBUQQiX" clientKey:@"hQaL8uaWff8Dr1Ky5Cs34MS2cxg5T0Wr5voXyg8U"];
+    
+    [Parse setApplicationId:@"ttpedmQfBzcXueernRefpYjuT1zsbkov8hTE1GZS"
+                  clientKey:@"rLG4YXRDkZ3WUBZ2F1kfiok1pgY9ZziCh5xzdauY"];
+    
     
     [self selectRootViewController];
     
@@ -41,7 +44,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -62,7 +65,7 @@
 
 - (void) selectRootViewController {
     PFUser *currentUser = [PFUser currentUser];
-
+    
     
     if (currentUser) {
         self.window.rootViewController = [[MainViewController alloc] init];
