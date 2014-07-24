@@ -25,6 +25,8 @@
 		4C266F271981790B00118E2E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F251981790B00118E2E /* MainViewController.xib */; };
 		4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F2919817AEE00118E2E /* StartTimeViewController.m */; };
 		4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */; };
+		4C266F311981B1D900118E2E /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F2F1981B1D900118E2E /* SignupViewController.m */; };
+		4C266F321981B1D900118E2E /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F301981B1D900118E2E /* SignupViewController.xib */; };
 		B18CF97F03D343C3A4891A86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995025E51F4D4621AFE319D7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,9 @@
 		4C266F2819817AEE00118E2E /* StartTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTimeViewController.h; sourceTree = "<group>"; };
 		4C266F2919817AEE00118E2E /* StartTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTimeViewController.m; sourceTree = "<group>"; };
 		4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeViewController.xib; sourceTree = "<group>"; };
+		4C266F2E1981B1D900118E2E /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		4C266F2F1981B1D900118E2E /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		4C266F301981B1D900118E2E /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
 		995025E51F4D4621AFE319D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D606024DF01482F95D1E3DD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +183,9 @@
 				42422E3919818C60004CF068 /* LoginViewController.h */,
 				42422E3A19818C60004CF068 /* LoginViewController.m */,
 				42422E3B19818C60004CF068 /* LoginViewController.xib */,
+				4C266F2E1981B1D900118E2E /* SignupViewController.h */,
+				4C266F2F1981B1D900118E2E /* SignupViewController.m */,
+				4C266F301981B1D900118E2E /* SignupViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -260,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C266F321981B1D900118E2E /* SignupViewController.xib in Resources */,
 				42422E3D19818C60004CF068 /* LoginViewController.xib in Resources */,
 				4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */,
 				4C266EFF198178ED00118E2E /* InfoPlist.strings in Resources */,
@@ -316,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C266F311981B1D900118E2E /* SignupViewController.m in Sources */,
 				4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */,
 				4C266F01198178ED00118E2E /* main.m in Sources */,
 				4C266F261981790B00118E2E /* MainViewController.m in Sources */,

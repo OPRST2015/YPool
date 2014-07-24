@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F5637A2E-0F3A-4EB4-90C2-56D295C0516A</string>
+	<string>7D9D0053-4443-4BF9-8D9A-C8B30CE17047</string>
 	<key>IDESourceControlProjectName</key>
 	<string>YPool</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>AF39A55F-0FC2-41CB-9619-61BD49E14F23</key>
-		<string>https://github.com/sudipshah/YPool.git</string>
+		<key>8C0B7F94-7E03-49B7-A8A1-582546EB8D60</key>
+		<string>https://github.com/sudipshah/iOSProgramming.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>YPool.xcworkspace</string>
+	<string>YPool/YPool.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AF39A55F-0FC2-41CB-9619-61BD49E14F23</key>
-		<string>..</string>
+		<key>8C0B7F94-7E03-49B7-A8A1-582546EB8D60</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/sudipshah/YPool.git</string>
+	<string>https://github.com/sudipshah/iOSProgramming.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AF39A55F-0FC2-41CB-9619-61BD49E14F23</string>
+	<string>8C0B7F94-7E03-49B7-A8A1-582546EB8D60</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AF39A55F-0FC2-41CB-9619-61BD49E14F23</string>
+			<string>8C0B7F94-7E03-49B7-A8A1-582546EB8D60</string>
 			<key>IDESourceControlWCCName</key>
-			<string>YPool</string>
+			<string>iOSProgramming</string>
 		</dict>
 	</array>
 </dict>

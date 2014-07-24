@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/PFUser.h>
+#import "SignupViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -49,23 +50,27 @@
 
 - (IBAction)onSignup:(id)sender {
     
-    PFUser *user = [PFUser user];
-    user.username = self.usernameTextField.text;
-    user.password = self.passwordTextField.text;
+    SignupViewController * svc = [[SignupViewController alloc]init];
     
-
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-
-            NSLog(@"succeeded sign-up");
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];
-
-        } else {
-            // NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
-            NSLog(@"failed sign-up., %@", error);
-        }
-    }];
+    [self presentViewController:svc animated:YES completion:nil];
+    
+//    PFUser *user = [PFUser user];
+//    user.username = self.usernameTextField.text;
+//    user.password = self.passwordTextField.text;
+//    
+//
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (!error) {
+//
+//            NSLog(@"succeeded sign-up");
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];
+//
+//        } else {
+//            // NSString *errorString = [error userInfo][@"error"];
+//            // Show the errorString somewhere and let the user try again.
+//            NSLog(@"failed sign-up., %@", error);
+//        }
+//    }];
 }
 
 - (IBAction)onLogin:(id)sender {
