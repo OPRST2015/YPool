@@ -32,6 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.numberOfSeatsField.delegate = self;
+    NSLog(@"%@", self.selectedRoute);
 }
 
 - (void)didReceiveMemoryWarning

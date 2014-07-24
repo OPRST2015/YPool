@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 
 @implementation TDLAppDelegate
@@ -18,7 +19,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
+    [GMSServices provideAPIKey:@"AIzaSyBHlwLiBSGXzrbRPKdqH0vC-t1hRQwzSSs"];
+
     [Parse setApplicationId:@"ttpedmQfBzcXueernRefpYjuT1zsbkov8hTE1GZS"
                   clientKey:@"rLG4YXRDkZ3WUBZ2F1kfiok1pgY9ZziCh5xzdauY"];
     

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface StartTimeViewController : UIViewController <UITextFieldDelegate>
+@property (nonatomic,strong) NSDictionary *selectedRoute;
 
 @end

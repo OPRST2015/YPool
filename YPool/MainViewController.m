@@ -10,6 +10,7 @@
 #import "StartTimeViewController.h"
 #import "ParseQueryViewController.h"
 #import <Parse/Parse.h>
+#import "MapViewController.h"
 
 @interface MainViewController ()
 - (IBAction)onDriverButton:(id)sender;
@@ -43,8 +44,8 @@
 
 - (IBAction)onDriverButton:(id)sender {
     // NSLog(@"I am a driver!");
-    StartTimeViewController *startTimeVC = [[StartTimeViewController alloc] init];
-    [self presentViewController:startTimeVC animated:YES completion:nil];
+    MapViewController *mvc = [[MapViewController alloc] init];
+    [self presentViewController:mvc animated:YES completion:nil];
 }
 
 - (IBAction)onYpoolerButton:(id)sender {
