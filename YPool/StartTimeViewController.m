@@ -49,20 +49,32 @@
 - (IBAction)saveRoute:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
     
-    PFObject *route = [PFObject objectWithClassName:@"publishedRoutes"];
-    route[@"driver"] = currentUser;
-    
-    NSDate* currentDate = [NSDate date];
-    
+    // save published route object
+    PFObject *route = [PFObject objectWithClassName:@"publishedRoute"];
+    route[@"driverUser"] = currentUser;
     route[@"startTime"] = [self.startTimePicker date];
     route[@"routeDetail"] = @"this is the route detail";
     route[@"numberOfSeats"] = @([self.numberOfSeatsField.text intValue]);
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:40.0 longitude:-30.0];
+    route[@"startPoint"] = point;
     
     [route saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
         NSLog(@"saved route");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
     }];
+    
+    // save routeEndPoint object (to ease querying)
+    PFObject *routeEndPoint = [PFObject objectWithClassName:@"routeEndPoint"];
+    routeEndPoint[@"routeId"] = route;
+    routeEndPoint[@"destinationPoint"] = point;
+    
+    [routeEndPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // success
+        NSLog(@"saved end point");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"EndPointPublished" object:nil];
+    }];
+    
 }
 
 @end
