@@ -58,7 +58,7 @@
     PFGeoPoint *startPoint = [PFGeoPoint geoPointWithLatitude:37.37 longitude:-122.03];
     route[@"startPoint"] = startPoint;
     route[@"startPlace"] = @"Sunnyvale, CA";
-    route[@"destinationPlace"] = @"Mountain View, CA";
+    route[@"endPlace"] = @"Mountain View, CA";
     
     [route saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
@@ -71,8 +71,7 @@
     
     routeEndPoint[@"routeId"] = route;
     PFGeoPoint *endPoint = [PFGeoPoint geoPointWithLatitude:37.38 longitude:-122.08];
-    routeEndPoint[@"destinationPoint"] = endPoint;
-    route[@"destinationPlace"] = @"Mountain View, CA";
+    routeEndPoint[@"endPoint"] = endPoint;
     [routeEndPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
         NSLog(@"saved end point");

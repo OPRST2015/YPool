@@ -33,12 +33,20 @@
     [query includeKey:@"user"];
     [query orderByDescending:@"createdAt"];
 
-    PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:37.35 longitude:-121.96];
-    [query whereKey:@"startPoint" nearGeoPoint:userGeoPoint withinMiles:10.0];
+    PFGeoPoint *userStartGeoPoint = [PFGeoPoint geoPointWithLatitude:37.35 longitude:-121.96];
+    PFGeoPoint *userEndGeoPoint = [PFGeoPoint geoPointWithLatitude:37.38 longitude:-122.08];
+    [query whereKey:@"startPoint" nearGeoPoint:userStartGeoPoint withinMiles:5.0];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"results: %@", objects);
+            PFQuery *endPointQuery = [PFQuery queryWithClassName:@"routeEndPoint"];
+            [endPointQuery whereKey:@"endPoint" nearGeoPoint:userEndGeoPoint withinMiles:5.0];
+            [endPointQuery whereKey:@"routeId" containedIn:objects];
+            
+            NSArray *allObjects = [endPointQuery findObjects];
+            NSLog(@"all objects %@", allObjects);
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
