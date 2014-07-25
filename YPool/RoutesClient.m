@@ -73,7 +73,9 @@
                                 PFObject *route = endPointObject[@"routeId"];
                                 // NSLog(@"end point object id %@", route.objectId);
                                 if([routeDict valueForKey:route.objectId] != nil) {
-                                    [validRoutes addObject:route];
+                                    // we have a PFObject with one RouteID
+                                    
+                                    [validRoutes addObject:[self convertPFObjectToDisctionary:route]];
                                 }
                             }
                             callback(validRoutes, nil);
@@ -92,6 +94,11 @@
             
         }];
     }];
+}
+
+- (NSDictionary *)convertPFObjectToDisctionary:(PFObject *)route {
+    NSMutableDictionary *d;
+    return [d copy];
 }
 
 - (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
@@ -125,5 +132,36 @@
 - (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback {
 
 }
+
+- (void) postNewRequest: (PFObject *) route callback:(void (^)(BOOL succeeded, NSError *error)) callback {
+    PFObject *liftRequest = [PFObject objectWithClassName:@"liftRequest"];
+    
+    liftRequest[@"routeId"] = route;
+    liftRequest[@"passengerUser"] = [PFUser currentUser];
+    liftRequest[@"requestStatus"] = @"PENDING";
+    
+    [liftRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        callback(succeeded, error);
+    }];
+
+}
+
+- (void) updateRequest: (NSString *) requestId status:(NSString *)status callback:(void (^)(BOOL succeeded, NSError *error)) callback {
+    PFQuery *query = [PFQuery queryWithClassName:@"liftRequest"];
+    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:requestId block:^(PFObject *liftRequest, NSError *error) {
+        
+        // Now let's update it with some new data. In this case, only cheatMode and score
+        // will get sent to the cloud. playerName hasn't changed.
+        liftRequest[@"requestStatus"] = status;
+        
+        [liftRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            callback(succeeded, error);
+        }];
+        
+    }];
+}
+
 
 @end

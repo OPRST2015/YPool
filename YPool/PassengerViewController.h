@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PassengerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PassengerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *poolData;
 @property (strong, nonatomic) NSDictionary *poolSelected;
