@@ -154,7 +154,7 @@
     self.selectedIndex = [polyline.title integerValue];
     polyline.strokeWidth = 6.;
     
-    //[self.delegate handleTapOverlay:polyline];
+    [self.delegate handleTapOverlay:polyline];
 }
 
 -(NSDictionary *) getSelectedRoute {

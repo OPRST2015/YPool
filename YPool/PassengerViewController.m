@@ -7,7 +7,7 @@
 //
 
 #import "PassengerViewController.h"
-#import "PoolCellTableViewCell.h"
+#import "PoolTableViewCell.h"
 #import "PoolSelectionViewController.h"
 #import <Parse/Parse.h>
 #import "RoutesClient.h"
@@ -100,13 +100,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PoolCellTableViewCell *cell;
+    PoolTableViewCell *cell;
     NSDictionary *pool;
     NSDictionary *passengers;
     cell = [tableView dequeueReusableCellWithIdentifier:@"poolCell" forIndexPath:indexPath];
     
-    // use custom cell, display name of pool, starting time
-    // note -- name will include location info
+    // use custom cell
+    cell.poolCellBackgroundImage.image = [UIImage imageNamed:@"poolee-route-table-bkg.png"];
+    cell.poolSource.text = pool[@"source"];
     cell.poolDestination.text = pool[@"destination"];
     cell.poolTime.text = pool[@"time"];
     passengers = pool[@"passengers"];
@@ -115,12 +116,12 @@
                                 pool[@"seats"]];
     
     // use one or the other of these - label needs to be bigger?
-    // cell.poolStatus.text = @"N";
+    cell.poolStatus.text = @"N";
     cell.poolStatusImageView.image = [UIImage imageNamed:@{@"N": @"statusNewPool.png",
                                                            @"R": @"statusRequestPool.png",
                                                            @"D": @"statusDeclinePool.png",
                                                            @"A": @"statusAcceptPool.png",
-                                                           @"C": @"statusConfirmPool.png"}[@"N"]] ;
+                                                           @"C": @"statusConfirmPool.png"}[pool[@"status"]]] ;
     return cell;
 }
 
