@@ -73,7 +73,7 @@
     RideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideTableViewCell"];
     if ([self.rides[indexPath.section][@"requestInfo"] count] > 0) {
         PFUser *user = self.rides[indexPath.section][@"requestInfo"][indexPath.row][@"passengerUser"];
-        cell.userName.text = @"Sudip Shah";
+        cell.userName.text = user[@"name"];
     }
     return cell;
 }
