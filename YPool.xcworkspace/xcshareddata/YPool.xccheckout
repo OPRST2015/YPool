@@ -14,7 +14,7 @@
 		<string>https://github.com/sudipshah/YPool.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>YPool.xcworkspace</string>
+	<string>YPool/YPool.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D469BFD9-9C11-46CC-901C-B96244EB2EF3</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>D469BFD9-9C11-46CC-901C-B96244EB2EF3</string>
 			<key>IDESourceControlWCCName</key>
-			<string>YPool</string>
+			<string>iOSProgramming</string>
 		</dict>
 	</array>
 </dict>

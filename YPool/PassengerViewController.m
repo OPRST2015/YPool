@@ -10,6 +10,7 @@
 #import "PoolCellTableViewCell.h"
 #import "PoolSelectionViewController.h"
 #import <Parse/Parse.h>
+#import "RoutesClient.h"
 
 @interface PassengerViewController ()
 
@@ -29,13 +30,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.poolSelected = nil;
     
-
 //    PFQuery *query = [PFQuery queryWithClassName:@"publishedRoute"];
 //    [query orderByDescending:@"createdAt"];
 //    
@@ -63,12 +62,18 @@
 //        }
 //    }];
 
+    RoutesClient *routesClient = [RoutesClient instance];
+    
+    [routesClient getMatchingRoutes:@"" dest:@"" callback:^(NSArray *objects, NSError *error) {
+        NSLog(@"matched routes %@", objects);
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Do any last initialization...
-
+    
     // (re)load data table of routes
     // *** need to add read data here
     self.poolData = nil;
@@ -89,7 +94,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-     return self.poolData.count;
+    return self.poolData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,7 +112,7 @@
     cell.poolPassengers.text = [NSString stringWithFormat:@"%d of %@",
                                 (int)passengers.count,
                                 pool[@"seats"]];
-
+    
     // use one or the other of these - label needs to be bigger?
     // cell.poolStatus.text = @"N";
     cell.poolStatusImageView.image = [UIImage imageNamed:@{@"N": @"statusNewPool.png",
@@ -150,7 +155,7 @@
     // row is selected
     
     // now update map using self.poolMapImageView
-
+    
 }
 
 - (IBAction)poolSelectedAction:(id)sender {
@@ -158,7 +163,7 @@
         // allow more interaction of selected route
         PoolSelectionViewController *poolSelectionViewController = [[PoolSelectionViewController alloc] initWithNibName:@"TLDPoolSelectionViewController"  bundle:nil];
         poolSelectionViewController.selectedPool = self.poolSelected;
-
+        
         [self presentViewController:poolSelectionViewController animated:YES completion:nil];
     }
     
