@@ -10,6 +10,7 @@
 
 @interface PoolCellTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *poolSource;
 @property (weak, nonatomic) IBOutlet UILabel *poolDestination;
 @property (weak, nonatomic) IBOutlet UILabel *poolTime;
 @property (weak, nonatomic) IBOutlet UILabel *poolPassengers;

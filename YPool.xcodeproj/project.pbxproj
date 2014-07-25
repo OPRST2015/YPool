@@ -64,6 +64,9 @@
 		9B14FF241981DC3900620C53 /* statusRequestPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1F1981DC3900620C53 /* statusRequestPool.png */; };
 		9B76C07319821486004F02ED /* PoolCellTableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B76C07219821486004F02ED /* PoolCellTableViewCell1.m */; };
 		9B76C07519821495004F02ED /* PoolCellTableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B76C07419821495004F02ED /* PoolCellTableViewCell1.xib */; };
+		9B76C07A198216B4004F02ED /* poolee-bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B76C077198216B4004F02ED /* poolee-bkg.png */; };
+		9B76C07B198216B4004F02ED /* poolee-route-table-bkg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B76C078198216B4004F02ED /* poolee-route-table-bkg.png */; };
+		9B76C07C198216B4004F02ED /* poolee-select-destintion.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B76C079198216B4004F02ED /* poolee-select-destintion.png */; };
 		B18CF97F03D343C3A4891A86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995025E51F4D4621AFE319D7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +155,9 @@
 		9B76C07119821474004F02ED /* PoolCellTableViewCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolCellTableViewCell1.h; sourceTree = "<group>"; };
 		9B76C07219821486004F02ED /* PoolCellTableViewCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolCellTableViewCell1.m; sourceTree = "<group>"; };
 		9B76C07419821495004F02ED /* PoolCellTableViewCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoolCellTableViewCell1.xib; sourceTree = "<group>"; };
+		9B76C077198216B4004F02ED /* poolee-bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poolee-bkg.png"; sourceTree = "<group>"; };
+		9B76C078198216B4004F02ED /* poolee-route-table-bkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poolee-route-table-bkg.png"; sourceTree = "<group>"; };
+		9B76C079198216B4004F02ED /* poolee-select-destintion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poolee-select-destintion.png"; sourceTree = "<group>"; };
 		9D606024DF01482F95D1E3DD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +252,7 @@
 				791B48371981D9D000EA3411 /* GCGeocodingService.m */,
 				791B48381981D9D000EA3411 /* MDDirectionService.h */,
 				791B48391981D9D000EA3411 /* MDDirectionService.m */,
+				9B76C076198216B4004F02ED /* backgroundImages */,
 				9B14FF1A1981DC3900620C53 /* statusImages */,
 				4C266F2D19817AFC00118E2E /* View Controllers */,
 				4C266F03198178ED00118E2E /* TDLAppDelegate.h */,
@@ -338,6 +345,16 @@
 			path = statusImages;
 			sourceTree = "<group>";
 		};
+		9B76C076198216B4004F02ED /* backgroundImages */ = {
+			isa = PBXGroup;
+			children = (
+				9B76C077198216B4004F02ED /* poolee-bkg.png */,
+				9B76C078198216B4004F02ED /* poolee-route-table-bkg.png */,
+				9B76C079198216B4004F02ED /* poolee-select-destintion.png */,
+			);
+			path = backgroundImages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,8 +437,11 @@
 				9B14FF211981DC3900620C53 /* statusConfirmPool.png in Resources */,
 				791B480B1981CC5B00EA3411 /* GoogleMaps.bundle in Resources */,
 				42422E3D19818C60004CF068 /* LoginViewController.xib in Resources */,
+				9B76C07C198216B4004F02ED /* poolee-select-destintion.png in Resources */,
 				9B14FF231981DC3900620C53 /* statusRejectPool.png in Resources */,
 				9B14FF201981DC3900620C53 /* statusAcceptPool.png in Resources */,
+				9B76C07A198216B4004F02ED /* poolee-bkg.png in Resources */,
+				9B76C07B198216B4004F02ED /* poolee-route-table-bkg.png in Resources */,
 				4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */,
 				791B482F1981CDD300EA3411 /* MapViewController.xib in Resources */,
 				4C266F321981B1D900118E2E /* (null) in Resources */,
