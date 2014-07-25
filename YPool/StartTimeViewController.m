@@ -31,8 +31,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+
     UIGestureRecognizer *tapper = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(handleSingleTap:)];
+    
     tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapper];
     
