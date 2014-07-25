@@ -7,8 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PassengerViewController">
             <connections>
                 <outlet property="backgroundImageView" destination="Dc5-gv-IQI" id="rtf-4T-wxl"/>
+                <outlet property="destinationTextField" destination="V6a-VJ-9NU" id="7OJ-Tf-PhT"/>
                 <outlet property="poolTableView" destination="Vaa-1s-dYt" id="QAJ-bP-G6K"/>
                 <outlet property="selectionImageView" destination="MUR-r2-tXl" id="Izk-dr-13n"/>
+                <outlet property="sourceTextField" destination="GfL-K2-zBj" id="P9s-a2-Aiy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,13 +31,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vaa-1s-dYt">
-                    <rect key="frame" x="0.0" y="167" width="320" height="395"/>
+                    <rect key="frame" x="0.0" y="157" width="320" height="405"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poolee-select-destintion" translatesAutoresizingMaskIntoConstraints="NO" id="MUR-r2-tXl">
-                    <rect key="frame" x="8" y="80" width="305" height="79"/>
+                    <rect key="frame" x="8" y="70" width="305" height="79"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFu-50-2qs">
@@ -48,6 +50,18 @@
                         <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="8AO-su-7tR"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Source" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GfL-K2-zBj">
+                    <rect key="frame" x="44" y="75" width="234" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Destination" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6a-VJ-9NU">
+                    <rect key="frame" x="44" y="120" width="234" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

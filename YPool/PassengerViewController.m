@@ -16,8 +16,13 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *selectionImageView;
+@property (weak, nonatomic) IBOutlet UITextField *sourceTextField;
+@property (weak, nonatomic) IBOutlet UITextField *destinationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *poolTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *poolMapImageView;
+
+@property (strong, nonatomic) NSString *filterSource;
+@property (strong, nonatomic) NSString *filterDestination;
 
 @end
 
@@ -69,14 +74,20 @@
 //            NSLog(@"Error: %@ %@", error, [error userInfo]);
 //        }
 //    }];
+    self.filterSource = @"Sunnyvale, CA";
+    self.filterDestination = @"Mountain View, CA";
+    [self reloadTableData];
 
+    [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
+}
+
+- (void)reloadTableData {
     RoutesClient *routesClient = [RoutesClient instance];
     
-    [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
+    [routesClient getMatchingRoutes:self.filterSource dest:self.filterDestination radius:20.0 callback:^(NSArray *objects, NSError *error) {
         NSLog(@"matched routes %@", objects);
     }];
     
-    [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,6 +97,8 @@
     // (re)load data table of routes
     // *** need to add read data here
     self.poolData = nil;
+    [self reloadTableData];
+
 //    self.backgroundImageView.image = [UIImage imageNamed:@"poolee-bkg.png"];
 //    self.selectionImageView.image = [UIImage imageNamed:@"poolee-select-destination.png"];
 }
@@ -98,6 +111,21 @@
 
 - (IBAction)backButtonAction:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)reloadButtonAction:(id)sender {
+    self.filterSource = self.sourceTextField.text;
+    self.filterDestination = self.destinationTextField.text;
+    [self reloadTableData];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    if (![self.sourceTextField.text isEqualToString:@""] && ![self.destinationTextField.text isEqualToString:@""]) {
+        [self reloadTableData];
+    }
+    return YES;
 }
 
 
