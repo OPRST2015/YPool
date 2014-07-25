@@ -15,7 +15,8 @@
 
 - (void) getMatchingRoutes:(NSString *)start dest:(NSString *)dest radius:(float)radius callback:(void (^)(NSArray *objects, NSError *error)) callback;
 - (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback;
-- (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback;
-- (void) postMyRequest;
+- (void) getMyRequestedRoutes: (void (^)(NSArray *objects, NSError *error)) callback;
+- (void) postNewRequest: (PFObject *) route callback:(void (^)(BOOL succeeded, NSError *error)) callback;
+- (void) updateRequest: (NSString *) requestId status:(NSString *)status callback:(void (^)(BOOL succeeded, NSError *error)) callback;
 
 @end

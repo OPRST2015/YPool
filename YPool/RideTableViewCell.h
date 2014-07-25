@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import "RoutesClient.h"
 
 @interface RideTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) PFObject *data;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UIView *pendingView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+- (IBAction)onAccept:(id)sender;
+- (IBAction)onDecline:(id)sender;
+@property (strong, nonatomic) RoutesClient *rc;
+
 @end

@@ -128,6 +128,7 @@
 
 - (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
     PFQuery *publishedRoutes = [PFQuery queryWithClassName:@"publishedRoute"];
+    [publishedRoutes orderByDescending:@"startTime"];
     [publishedRoutes includeKey:@"driverUser"];
     PFUser *currentUser = [PFUser currentUser];
     NSMutableArray *responseArray = [[NSMutableArray alloc] init];
@@ -154,14 +155,62 @@
     }];
 }
 
-- (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback {
+- (void) getMyRequestedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
+    PFQuery *liftRequests = [PFQuery queryWithClassName:@"liftRequest"];
+    [liftRequests includeKey:@"passengerUser"];
+    [liftRequests orderByDescending:@"createdAt"];
+
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSMutableArray *responseArray = [[NSMutableArray alloc] init];
+    
+    [liftRequests whereKey:@"passengerUser" equalTo:currentUser];
+    [liftRequests includeKey:@"routeId"];
+    
+    [liftRequests findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {
+        for(PFObject *request in requests) {
+            NSMutableDictionary *response = [[NSMutableDictionary alloc]init];
+            
+            NSArray *requests = @[request];
+            
+            [response setObject:request[@"routeId"] forKey:@"routeInfo"];
+            [response setObject:requests forKey:@"requestInfo"];
+            [responseArray addObject:response];
+        }
+        callback(responseArray, nil);
+    }];
 
 }
 
-- (void) postMyRequest {
+- (void) postNewRequest: (PFObject *) route callback:(void (^)(BOOL succeeded, NSError *error)) callback {
+    PFObject *liftRequest = [PFObject objectWithClassName:@"liftRequest"];
+    
+    liftRequest[@"routeId"] = route;
+    liftRequest[@"passengerUser"] = [PFUser currentUser];
+    liftRequest[@"requestStatus"] = @"PENDING";
+    
+    [liftRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        callback(succeeded, error);
+    }];
 
 }
 
+- (void) updateRequest: (NSString *) requestId status:(NSString *)status callback:(void (^)(BOOL succeeded, NSError *error)) callback {
+    PFQuery *query = [PFQuery queryWithClassName:@"liftRequest"];
+    
+    // Retrieve the object by id
+    [query getObjectInBackgroundWithId:requestId block:^(PFObject *liftRequest, NSError *error) {
+        
+        // Now let's update it with some new data. In this case, only cheatMode and score
+        // will get sent to the cloud. playerName hasn't changed.
+        liftRequest[@"requestStatus"] = status;
+        
+        [liftRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            callback(succeeded, error);
+        }];
+        
+    }];
+}
 
 
 @end
