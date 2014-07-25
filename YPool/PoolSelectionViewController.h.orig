@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GoogleMapViewService.h"
 
+<<<<<<< HEAD
+@interface PoolSelectionViewController : UIViewController 
+=======
 @interface PoolSelectionViewController : UIViewController <GMSMapViewDelegate>
+>>>>>>> 910ef7da1b24bbf23b6d3fab2339e71cf9576ef6
 
 @property (weak, nonatomic) NSDictionary *selectedPool;
 

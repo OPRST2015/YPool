@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeText;
 - (IBAction)onNextButton:(id)sender;
 
-//@property (nonatomic, strong) GoogleMapViewService *gmv;
+@property (nonatomic, strong) GoogleMapViewService *gmv;
 
 @end
 
@@ -29,8 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        self.gmv = [[GoogleMapViewService alloc] init];
-//        self.gmv.delegate = self;
+        self.gmv = [[GoogleMapViewService alloc] init];
     }
     return self;
 }
@@ -47,8 +46,9 @@
     self.startTimeText.text = self.selectedPool[@"time"];
     self.seatText.text = self.selectedPool[@"seats"];
     
-//    [self.mapView addSubview:[self.gmv getInitialViewWithFrame:self.mapView]];
+    [self.mapView addSubview:[self.gmv getInitialViewWithFrame:self.mapView]];
     
+    [self.gmv setRoute:self.selectedPool[@"rawRoute"]];
     // Do any additional setup after loading the view from its nib.
 }
 
