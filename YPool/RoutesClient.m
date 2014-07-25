@@ -60,7 +60,7 @@
                     
                     [endPointQuery whereKey:@"geoPoint" nearGeoPoint:toGeoPoint withinMiles:radius];
                     [endPointQuery whereKey:@"endPoint" equalTo:@(YES)];
-                    [endPointQuery includeKey:@"routeId"];
+                    [endPointQuery includeKey:@"routeId.driverUser"];
                     
                     [endPointQuery includeKey:@"routeId.driverUser"];
                     
