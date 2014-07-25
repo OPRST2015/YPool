@@ -10,4 +10,8 @@
 
 @interface RoutesClient : NSObject
 
++ (RoutesClient *) instance;
+
+- (void) getMatchingRoutes:(NSString *)start dest:(NSString *)dest callback:(void (^)(NSArray *objects, NSError *error)) callback;
+
 @end

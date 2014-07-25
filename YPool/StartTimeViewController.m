@@ -53,7 +53,6 @@
 - (IBAction)saveRoute:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
     NSString *jsonString;
-
     
     // save published route object
     PFObject *route = [PFObject objectWithClassName:@"publishedRoute"];
@@ -82,7 +81,6 @@
         NSLog(@"saved route");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
     }];
-    
     
     NSString *startLatString = self.selectedRoute[@"legs"][0][@"start_location"][@"lat"];
     float startLat = [startLatString floatValue];
