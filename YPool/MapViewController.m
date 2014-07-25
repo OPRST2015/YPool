@@ -7,39 +7,29 @@
 //
 
 #import "MapViewController.h"
-#import "MDDirectionService.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import "GCGeocodingService.h"
 #import "StartTimeViewController.h"
+#import "GoogleMapViewService.h"
 
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UIView *mapView;
-@property (nonatomic, strong) GMSMapView *mapView_;
-@property (nonatomic, strong) NSMutableArray *waypoints_;
-@property (nonatomic, strong) NSMutableArray *waypointStrings_;
 @property (weak, nonatomic) IBOutlet UITextField *destinationField;
-- (IBAction)onMapit:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *sourceField;
-@property (nonatomic, strong) NSMutableArray *paths;
 - (IBAction)onContinue:(id)sender;
-@property (nonatomic, strong) NSMutableArray *routes;
-@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) GoogleMapViewService *gmv;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
 
 @end
 
 
 @implementation MapViewController
 
-@synthesize gs;
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.paths = [[NSMutableArray alloc]init];
-        self.routes = [[NSMutableArray alloc] init];
+        self.gmv = [[GoogleMapViewService alloc] init];
+        self.gmv.delegate = self;
     }
     return self;
 }
@@ -47,18 +37,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+
+    self.sourceField.returnKeyType = UIReturnKeyRoute;
+    self.destinationField.returnKeyType = UIReturnKeyRoute;
+    self.destinationField.delegate = self;
+    self.sourceField.delegate = self;
+    self.continueButton.hidden = YES;
     
-    gs = [[GCGeocodingService alloc] init];
+    [self.mapView addSubview:[self.gmv getInitialViewWithFrame:self.mapView]];
     
-    self.waypoints_ = [[NSMutableArray alloc]init];
-    self.waypointStrings_ = [[NSMutableArray alloc]init];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.3533409
-                                                            longitude:-122.010979
-                                                                 zoom:13];
-    self.mapView_ = [GMSMapView mapWithFrame:self.mapView.bounds camera:camera];
-    self.mapView_.delegate = self;
-    //self.view = self.mapView_;
-    [self.mapView addSubview:self.mapView_];
+    /*GMSPanoramaView *panoView_ = [[GMSPanoramaView alloc] initWithFrame:self.mapView.bounds];
+    [self.mapView addSubview:panoView_];
+    
+    [panoView_ moveNearCoordinate:CLLocationCoordinate2DMake(-33.732, 150.312)];*/
     /*    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(
      37.3533409,-122.010979);
      
@@ -83,103 +76,6 @@
      marker.map = self.mapView_;*/
 }
 
-/*- (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:
- (CLLocationCoordinate2D)coordinate {
- 
- CLLocationCoordinate2D position = CLLocationCoordinate2DMake(
- coordinate.latitude,
- coordinate.longitude);
- GMSMarker *marker = [GMSMarker markerWithPosition:position];
- marker.map = self.mapView_;
- [self.waypoints_ addObject:marker];
- NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
- coordinate.latitude,coordinate.longitude];
- [self.waypointStrings_ addObject:positionString];
- if([self.waypoints_ count]>1){
- NSString *sensor = @"false";
- NSArray *parameters = [NSArray arrayWithObjects:sensor, self.waypointStrings_,
- nil];
- NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
- NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
- forKeys:keys];
- MDDirectionService *mds=[[MDDirectionService alloc] init];
- SEL selector = @selector(addDirections:);
- [mds setDirectionsQuery:query
- withSelector:selector
- withDelegate:self];
- }
- }*/
-
-- (void) addWaypoint:(CLLocationCoordinate2D) position {
-    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.map = self.mapView_;
-    [self.waypoints_ addObject:marker];
-    NSString *positionString = [[NSString alloc] initWithFormat:@"%f,%f",
-                                position.latitude,position.longitude];
-    [self.waypointStrings_ addObject:positionString];
-}
-
-- (void)addDirections:(NSDictionary *)json {
-    
-    NSDictionary *routes = [json objectForKey:@"routes"];
-    [self.paths removeAllObjects];
-    NSInteger index = 0;
-    
-    for (NSDictionary *route in routes) {
-        NSDictionary *route_path = [route objectForKey:@"overview_polyline"];
-        NSString *overview_route = [route_path objectForKey:@"points"];
-        GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
-        GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-        
-        CGFloat redLevel    = rand() / (float) RAND_MAX;
-        CGFloat greenLevel  = rand() / (float) RAND_MAX;
-        CGFloat blueLevel   = rand() / (float) RAND_MAX;
-        
-        polyline.strokeColor = [UIColor colorWithRed: redLevel
-                                               green: greenLevel
-                                                blue: blueLevel
-                                               alpha: 1.0];
-        polyline.strokeWidth = 4.;
-        
-        polyline.tappable = TRUE;
-        polyline.title = [NSString stringWithFormat:@"%d", index];
-        polyline.map = self.mapView_;
-        [self.paths addObject:polyline];
-        [self.routes addObject:route];
-        index++;
-    }
-    
-    
-    CLLocationCoordinate2D startPoint = [self convertStringToPosition:self.waypointStrings_[0]];
-    CLLocationCoordinate2D endPoint = [self convertStringToPosition:self.waypointStrings_[1]];
-    
-    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:startPoint coordinate:endPoint];
-    GMSCameraUpdate *geoLocateCam = [GMSCameraUpdate fitBounds:bounds];
-    [self.mapView_ animateWithCameraUpdate:geoLocateCam];
-}
-
--(CLLocationCoordinate2D)convertStringToPosition: (NSString *)wp {
-    NSArray *waypoints = [wp componentsSeparatedByString:@","];
-    
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake((CGFloat)[waypoints[0] floatValue], (CGFloat)[waypoints[1] floatValue]);
-    return position;
-}
-
-- (void)getDirections {
-    if([self.waypoints_ count]>1){
-        NSString *sensor = @"false";
-        NSArray *parameters = [NSArray arrayWithObjects:sensor, self.waypointStrings_,
-                               nil];
-        NSArray *keys = [NSArray arrayWithObjects:@"sensor", @"waypoints", nil];
-        NSDictionary *query = [NSDictionary dictionaryWithObjects:parameters
-                                                          forKeys:keys];
-        MDDirectionService *mds=[[MDDirectionService alloc] init];
-        SEL selector = @selector(addDirections:);
-        [mds setDirectionsQuery:query
-                   withSelector:selector
-                   withDelegate:self];
-    }
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -190,48 +86,24 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    
+    if (![self.sourceField.text isEqualToString:@""] && ![self.destinationField.text isEqualToString:@""]) {
+        [self.gmv drawPathFrom:self.sourceField.text to:self.destinationField.text];
+    }
+    
     return YES;
 }
 
 
-- (IBAction)onMapit:(id)sender {
-    [self.destinationField resignFirstResponder];
-    
-    [gs geocodeAddress:self.sourceField.text withCallback:@selector(addPoint) withDelegate:self];
-    [gs geocodeAddress:self.destinationField.text withCallback:@selector(addPoint) withDelegate:self];
-}
-
-- (void)addPoint {
-    
-    double lat = [[gs.geocode objectForKey:@"lat"] doubleValue];
-    double lng = [[gs.geocode objectForKey:@"lng"] doubleValue];
-    NSLog(@"Adding Point");
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    CLLocationCoordinate2D geolocation = CLLocationCoordinate2DMake(lat,lng);
-    [self addWaypoint:geolocation];
-    marker.position = geolocation;
-    marker.title = [gs.geocode objectForKey:@"address"];
-    
-    marker.map = self.mapView_;
-    
-    [self getDirections];
-}
-
--(void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSPolyline *)polyline {
-    NSLog(@"%@", self.paths);
-
-    for (GMSPolyline *line in self.paths) {
-        line.strokeWidth = 4.;
-    }
-    self.selectedIndex = [polyline.title integerValue];
-    polyline.strokeWidth = 8.;
-}
-
 - (IBAction)onContinue:(id)sender {
     StartTimeViewController *svc = [[StartTimeViewController alloc] init];
-    svc.selectedRoute = self.routes[self.selectedIndex];
+    svc.selectedRoute = [self.gmv getSelectedRoute];
 
-    [self presentViewController:svc animated:YES completion:nil];
-    NSLog(@"SELECTED INDEX %d", self.selectedIndex);
+    [self.navigationController pushViewController:svc animated:YES];
 }
+
+- (void) handleTapOverlay:(GMSPolyline *)polyline {
+    self.continueButton.hidden = NO;
+}
+
 @end

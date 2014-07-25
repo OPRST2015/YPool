@@ -1,14 +1,14 @@
 //
-//  PoolCellTableViewCell.m
+//  PoolTableViewCell.m
 //  YPool
 //
 //  Created by Carl Baltrunas on 7/24/14.
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "PoolCellTableViewCell.h"
+#import "PoolTableViewCell.h"
 
-@implementation PoolCellTableViewCell
+@implementation PoolTableViewCell
 
 - (void)awakeFromNib
 {

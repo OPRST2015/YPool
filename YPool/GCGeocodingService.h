@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface GCGeocodingService : NSObject
 
@@ -14,6 +15,8 @@
 - (void)geocodeAddress:(NSString *)address
           withCallback:(SEL)callback
           withDelegate:(id)delegate;
+
+- (void) geocodeAddressSimple:(NSString *)address callback: (void (^)(PFGeoPoint *data, NSError *error)) callback;
 
 @property (nonatomic, strong) NSDictionary *geocode;
 

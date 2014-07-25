@@ -68,12 +68,12 @@
 - (void) selectRootViewController {
     PFUser *currentUser = [PFUser currentUser];
     
-    
     if (currentUser) {
-        self.window.rootViewController = [[MainViewController alloc] init];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];
         
     } else {
-        self.window.rootViewController = [[LoginViewController alloc] init];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+
     }
 }
 

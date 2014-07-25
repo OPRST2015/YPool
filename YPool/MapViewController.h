@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import "GCGeocodingService.h"
+#import "GoogleMapViewService.h"
 
-@interface MapViewController : UIViewController <GMSMapViewDelegate, UITextFieldDelegate>
 
-@property (strong,nonatomic) GCGeocodingService *gs;
+@interface MapViewController : UIViewController <UITextFieldDelegate, GoogleMapViewServiceDelegate>
 
 @end
