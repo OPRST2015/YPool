@@ -9,6 +9,12 @@
 #import "PoolSelectionViewController.h"
 
 @interface PoolSelectionViewController ()
+@property (weak, nonatomic) IBOutlet UIView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *nameText;
+@property (weak, nonatomic) IBOutlet UILabel *seatText;
+@property (weak, nonatomic) IBOutlet UILabel *phoneText;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeText;
+- (IBAction)onNextButton:(id)sender;
 
 @end
 
@@ -26,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -35,4 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onNextButton:(id)sender {
+}
 @end
