@@ -35,6 +35,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +51,7 @@
 - (IBAction)onDriverButton:(id)sender {
     // NSLog(@"I am a driver!");
     MapViewController *mvc = [[MapViewController alloc] init];
-    [self presentViewController:mvc animated:YES completion:nil];
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 
 - (IBAction)onYpoolerButton:(id)sender {

@@ -13,10 +13,10 @@
 @interface MapViewController ()
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *destinationField;
-- (IBAction)onMapit:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *sourceField;
 - (IBAction)onContinue:(id)sender;
 @property (nonatomic, strong) GoogleMapViewService *gmv;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
 
 @end
 
@@ -37,6 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+
+    self.sourceField.returnKeyType = UIReturnKeyRoute;
+    self.destinationField.returnKeyType = UIReturnKeyRoute;
+    self.destinationField.delegate = self;
+    self.sourceField.delegate = self;
+    self.continueButton.hidden = YES;
     
     [self.mapView addSubview:[self.gmv getInitialViewWithFrame:self.mapView]];
     
@@ -78,14 +86,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    return YES;
-}
-
-
-- (IBAction)onMapit:(id)sender {
-    [self.destinationField resignFirstResponder];
     
-    [self.gmv drawPathFrom:self.sourceField.text to:self.destinationField.text];
+    if (![self.sourceField.text isEqualToString:@""] && ![self.destinationField.text isEqualToString:@""]) {
+        [self.gmv drawPathFrom:self.sourceField.text to:self.destinationField.text];
+    }
+    
+    return YES;
 }
 
 
@@ -93,6 +99,11 @@
     StartTimeViewController *svc = [[StartTimeViewController alloc] init];
     svc.selectedRoute = [self.gmv getSelectedRoute];
 
-    [self presentViewController:svc animated:YES completion:nil];
+    [self.navigationController pushViewController:svc animated:YES];
 }
+
+- (void) handleTapOverlay:(GMSPolyline *)polyline {
+    self.continueButton.hidden = NO;
+}
+
 @end
