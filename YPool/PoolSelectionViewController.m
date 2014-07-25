@@ -8,6 +8,7 @@
 
 #import "PoolSelectionViewController.h"
 #import "GoogleMapViewService.h"
+#import "RoutesClient.h"
 
 @interface PoolSelectionViewController ()
 @property (weak, nonatomic) IBOutlet UIView *mapView;
@@ -55,6 +56,17 @@
 }
 
 - (IBAction)onNextButton:(id)sender {
+    
+    RoutesClient *routesClient = [RoutesClient instance];
+    [routesClient postNewRequest:self.selectedPool[@"rawRoute"] callback:^(BOOL succeeded, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Request Submitted!"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
+    }];
     
     
 }
