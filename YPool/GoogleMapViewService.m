@@ -69,12 +69,19 @@
     NSDictionary *routes = [json objectForKey:@"routes"];
     [self.paths removeAllObjects];
     NSInteger index = 0;
+    GMSCoordinateBounds *bounds;
     
     for (NSDictionary *route in routes) {
         NSDictionary *route_path = [route objectForKey:@"overview_polyline"];
         NSString *overview_route = [route_path objectForKey:@"points"];
         GMSPath *path = [GMSPath pathFromEncodedPath:overview_route];
         GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+        
+        if (![bounds isValid]) {
+            bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
+        } else {
+            bounds = [bounds includingPath:path];
+        }
         
         CGFloat redLevel    = rand() / (float) RAND_MAX;
         CGFloat greenLevel  = rand() / (float) RAND_MAX;
@@ -94,11 +101,6 @@
         index++;
     }
     
-    
-    CLLocationCoordinate2D startPoint = [self convertStringToPosition:self.waypointStrings_[0]];
-    CLLocationCoordinate2D endPoint = [self convertStringToPosition:self.waypointStrings_[1]];
-    
-    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:startPoint coordinate:endPoint];
     GMSCameraUpdate *geoLocateCam = [GMSCameraUpdate fitBounds:bounds];
     [self.mapView_ animateWithCameraUpdate:geoLocateCam];
 }
@@ -142,6 +144,21 @@
     [self getDirections];
 }
 
+- (void) addPointWithoutDirections {
+    
+    double lat = [[gs.geocode objectForKey:@"lat"] doubleValue];
+    double lng = [[gs.geocode objectForKey:@"lng"] doubleValue];
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    CLLocationCoordinate2D geolocation = CLLocationCoordinate2DMake(lat,lng);
+    [self addWaypoint:geolocation];
+    marker.position = geolocation;
+    marker.title = [gs.geocode objectForKey:@"address"];
+    
+    marker.map = self.mapView_;
+}
+
+
 - (void) drawPathFrom:(NSString *)fromAddress to:(NSString *)toAddress {
     [gs geocodeAddress:fromAddress withCallback:@selector(addPoint) withDelegate:self];
     [gs geocodeAddress:toAddress withCallback:@selector(addPoint) withDelegate:self];
@@ -159,6 +176,20 @@
 
 -(NSDictionary *) getSelectedRoute {
     return self.routes[self.selectedIndex];
+}
+
+- (void) setRoute:(NSString *)json {
+    NSDictionary *jsonDict = [NSJSONSerialization
+                          JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
+                          options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves)
+                          error:nil];
+    
+    NSMutableDictionary *routes = [[NSMutableDictionary alloc] init];
+    routes[@"routes"] = @[jsonDict];
+    [gs geocodeAddress:jsonDict[@"legs"][0][@"start_address"] withCallback:@selector(addPointWithoutDirections) withDelegate:self];
+    [gs geocodeAddress:jsonDict[@"legs"][0][@"end_address"] withCallback:@selector(addPointWithoutDirections) withDelegate:self];
+    
+    [self addDirections:routes];
 }
 
 @end

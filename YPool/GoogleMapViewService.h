@@ -24,7 +24,7 @@
 -(GMSMapView *) getInitialViewWithFrame: (UIView *)frame;
 - (void) drawPathFrom:(NSString *)fromAddress to:(NSString *)toAddress;
 -(NSDictionary *) getSelectedRoute;
-
+- (void) setRoute:(NSString *)json;
 @property (nonatomic, weak) id <GoogleMapViewServiceDelegate> delegate;
 
 @end
