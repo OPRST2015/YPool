@@ -11,6 +11,7 @@
 #import "PoolSelectionViewController.h"
 #import <Parse/Parse.h>
 #import "RoutesClient.h"
+#import "PoolTableViewCell1.h"
 
 @interface PassengerViewController ()
 
@@ -20,9 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *destinationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *poolTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *poolMapImageView;
+@property (nonatomic, assign) BOOL noRoutesFound;
 
-@property (strong, nonatomic) NSString *filterSource;
-@property (strong, nonatomic) NSString *filterDestination;
 
 @end
 
@@ -47,46 +47,34 @@
     self.poolSelected = nil;
     self.poolTableView.delegate = self;
     self.poolTableView.dataSource = self;
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"publishedRoute"];
-//    [query orderByDescending:@"createdAt"];
-//    
-//    //    [query whereKey:@"startPoint" equalTo:@(YES)];
-//    
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            NSLog(@"results: %@", objects);
-//            for (int i=0; i<objects.count; i++) {
-//                PFObject *str = objects[i];
-//                NSString *endP = str[@"endPlace"];
-//                NSString *routeD = str[@"routeDetail"];
-//                
-//                NSDictionary *info = [NSJSONSerialization
-//                                      JSONObjectWithData:[routeD dataUsingEncoding:NSUTF8StringEncoding]
-//                                      options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves)
-//                                      error:&error];
-//
-//                NSLog(@"results: %@", info);
-//            }
-//            
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-    self.filterSource = @"Sunnyvale, CA";
-    self.filterDestination = @"Mountain View, CA";
-    [self reloadTableData];
+    self.sourceTextField.delegate = self;
+    self.destinationTextField.delegate = self;
 
+    [self getMatchingRoutesData];
+
+    
     [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
+    [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell1" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell1"];
+    [self.poolTableView reloadData];
 }
 
-- (void)reloadTableData {
-    RoutesClient *routesClient = [RoutesClient instance];
-    
-    [routesClient getMatchingRoutes:self.filterSource dest:self.filterDestination radius:20.0 callback:^(NSArray *objects, NSError *error) {
-        NSLog(@"matched routes %@", objects);
-    }];
+- (void)getMatchingRoutesData {
+    if (![self.sourceTextField.text isEqualToString:@""] && ![self.destinationTextField.text isEqualToString:@""]) {
+        RoutesClient *routesClient = [RoutesClient instance];
+        
+        [routesClient getMatchingRoutes:self.sourceTextField.text dest:self.destinationTextField.text radius:20.0 callback:^(NSArray *objects, NSError *error) {
+            
+            if ([objects count]) {
+                self.noRoutesFound = NO;
+                self.poolData = objects;
+                NSLog(@"matched routes %@", objects);
+            } else {
+                self.noRoutesFound = YES;
+            }
+            [self.poolTableView reloadData];
+        }];
+
+    }
     
 }
 
@@ -97,7 +85,8 @@
     // (re)load data table of routes
     // *** need to add read data here
     self.poolData = nil;
-    [self reloadTableData];
+    self.noRoutesFound = NO;
+    [self getMatchingRoutesData];
 
 //    self.backgroundImageView.image = [UIImage imageNamed:@"poolee-bkg.png"];
 //    self.selectionImageView.image = [UIImage imageNamed:@"poolee-select-destination.png"];
@@ -113,59 +102,65 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)reloadButtonAction:(id)sender {
-    self.filterSource = self.sourceTextField.text;
-    self.filterDestination = self.destinationTextField.text;
-    [self reloadTableData];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     
-    if (![self.sourceTextField.text isEqualToString:@""] && ![self.destinationTextField.text isEqualToString:@""]) {
-        [self reloadTableData];
-    }
+    [self getMatchingRoutesData];
     return YES;
 }
 
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.poolData.count;
+    NSLog(@"Count of Pool Data: %d", self.poolData.count);
+    if (self.noRoutesFound) {
+        return 1;
+    } else {
+        return self.poolData.count;
+    }
+
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PoolTableViewCell *cell;
-    NSDictionary *pool;
-    NSDictionary *passengers;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"PoolTableViewCell" forIndexPath:indexPath];
     
-    // use custom cell
-//    cell.poolCellBackgroundImage.image = [UIImage imageNamed:@"poolee-route-table-bkg.png"];
-    cell.poolSource.text = pool[@"source"];
-    cell.poolDestination.text = pool[@"destination"];
-    cell.poolTime.text = pool[@"time"];
-    passengers = pool[@"passengers"];
-    cell.poolPassengers.text = [NSString stringWithFormat:@"%d of %@",
-                                (int)passengers.count,
-                                pool[@"seats"]];
-    
-    // use one or the other of these - label needs to be bigger?
-    cell.poolStatus.text = @"N";
-    cell.poolStatusImageView.image = [UIImage imageNamed:@{@"N": @"statusNewPool.png",
-                                                           @"R": @"statusRequestPool.png",
-                                                           @"D": @"statusDeclinePool.png",
-                                                           @"A": @"statusAcceptPool.png",
-                                                           @"C": @"statusConfirmPool.png"}[pool[@"status"]]] ;
-    return cell;
+    if (self.noRoutesFound) {
+        PoolTableViewCell1 * ptvc1 = [tableView dequeueReusableCellWithIdentifier:@"PoolTableViewCell1" forIndexPath:indexPath];
+        return ptvc1;
+    } else {
+        PoolTableViewCell *cell;
+        NSDictionary *pool = self.poolData[indexPath.row];
+        NSLog(@"Data for TableCell: %@", pool);
+        //    NSDictionary *passengers;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PoolTableViewCell" forIndexPath:indexPath];
+        
+        // use custom cell
+        //    cell.poolCellBackgroundImage.image = [UIImage imageNamed:@"poolee-route-table-bkg.png"];
+        cell.poolSource.text = pool[@"source"];
+        cell.poolDestination.text = pool[@"destination"];
+        cell.poolTime.text = pool[@"time"];
+        //    passengers = pool[@"passengers"];
+        //    cell.poolPassengers.text = [NSString stringWithFormat:@"%d of %@",
+        //                                (int)passengers.count,
+        //                                pool[@"seats"]];
+        
+        cell.poolPassengers.text = pool[@"seats"];
+        // use one or the other of these - label needs to be bigger?
+        //    cell.poolStatus.text = @"N";
+        //    cell.poolStatusImageView.image = [UIImage imageNamed:@{@"N": @"statusNewPool.png",
+        //                                                           @"R": @"statusRequestPool.png",
+        //                                                           @"D": @"statusDeclinePool.png",
+        //                                                           @"A": @"statusAcceptPool.png",
+        //                                                           @"C": @"statusConfirmPool.png"}[pool[@"status"]]] ;
+        return cell;
+
+        
+    }
 }
 
 /* If we decide to allow deleting of routes via table edit */
@@ -199,16 +194,16 @@
     self.poolSelected = self.poolData[indexPath.row];
 
     // row is selected
-    [self poolSelectedAction:self];
+    [self poolSelectedAction];
     
     // now update map using self.poolMapImageView
     
 }
 
-- (IBAction)poolSelectedAction:(id)sender {
+- (void)poolSelectedAction {
     if (self.poolSelected) {
         // allow more interaction of selected route
-        PoolSelectionViewController *poolSelectionViewController = [[PoolSelectionViewController alloc] initWithNibName:@"TLDPoolSelectionViewController"  bundle:nil];
+        PoolSelectionViewController *poolSelectionViewController = [[PoolSelectionViewController alloc] init];
         poolSelectionViewController.selectedPool = self.poolSelected;
         
         [self presentViewController:poolSelectionViewController animated:YES completion:nil];

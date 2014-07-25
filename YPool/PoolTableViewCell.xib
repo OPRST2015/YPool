@@ -16,6 +16,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poolee-route-table-bkg.png" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-ck-6Xl">
                         <rect key="frame" x="8" y="3" width="305" height="79"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZ8-52-LT9">
                         <rect key="frame" x="41" y="13" width="256" height="21"/>
@@ -35,38 +36,19 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6y-8y-w7p">
-                        <rect key="frame" x="234" y="32" width="34" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Seats" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6h-Ef-JJm">
+                        <rect key="frame" x="257" y="32" width="48" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seats" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6h-Ef-JJm">
-                        <rect key="frame" x="270" y="32" width="35" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4df-9b-ImE">
-                        <rect key="frame" x="259" y="13" width="21" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MF-Qc-KKM">
-                        <rect key="frame" x="251" y="52" width="24" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="poolCellBackgroundImage" destination="OA7-ck-6Xl" id="R63-w6-mK9"/>
-                <outlet property="poolDestination" destination="yZ8-52-LT9" id="0fF-f2-qGP"/>
-                <outlet property="poolPassengers" destination="n6y-8y-w7p" id="Iqg-mj-Uk0"/>
-                <outlet property="poolSelectedImageView" destination="6MF-Qc-KKM" id="g3b-SD-oJz"/>
+                <outlet property="poolDestination" destination="QGH-hH-cio" id="UTk-61-rtD"/>
+                <outlet property="poolPassengers" destination="H6h-Ef-JJm" id="qRU-0a-RgZ"/>
                 <outlet property="poolSource" destination="yZ8-52-LT9" id="x1s-rf-bft"/>
-                <outlet property="poolStatus" destination="4df-9b-ImE" id="zxh-qC-Pft"/>
-                <outlet property="poolStatusImageView" destination="6MF-Qc-KKM" id="Fk3-rV-Yhj"/>
                 <outlet property="poolTime" destination="qB2-M9-FLk" id="FE6-zf-G0Y"/>
             </connections>
         </tableViewCell>
@@ -75,4 +57,3 @@
         <image name="poolee-route-table-bkg.png" width="611" height="158"/>
     </resources>
 </document>
-
