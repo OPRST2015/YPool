@@ -155,6 +155,42 @@
     }];
 }
 
+- (void) getPendingInviteCount: (void (^)(NSInteger count, NSError *error)) callback {
+    PFQuery *publishedRoutes = [PFQuery queryWithClassName:@"publishedRoute"];
+    [publishedRoutes orderByDescending:@"startTime"];
+    [publishedRoutes includeKey:@"driverUser"];
+    PFUser *currentUser = [PFUser currentUser];
+    NSMutableArray *responseArray = [[NSMutableArray alloc] init];
+    
+    [publishedRoutes whereKey:@"driverUser" equalTo:currentUser];
+    
+    [publishedRoutes findObjectsInBackgroundWithBlock:^(NSArray *routes, NSError *error) {
+        // NSLog(@"routes are %@", routes);
+        NSInteger count = 0;
+        PFQuery *liftRequestQuery = [PFQuery queryWithClassName:@"liftRequest"];
+        for(PFObject *route in routes) {
+            NSMutableDictionary *response = [[NSMutableDictionary alloc]init];
+            
+            // NSLog(@"route is %@", route.objectId);
+            [liftRequestQuery whereKey:@"routeId" equalTo:route];
+            [liftRequestQuery includeKey:@"passengerUser"];
+            NSArray *requests = [liftRequestQuery findObjects];
+            // NSLog(@"requests for route:  %@, %@", route.objectId, requests);
+            
+            for(id request in requests) {
+                if([request[@"requestStatus"] isEqualToString:@"PENDING"]) {
+                    count++;
+                }
+            }
+            
+        }
+        callback(count, nil);
+    }];
+}
+
+
+
+
 - (void) getMyRequestedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
     PFQuery *liftRequests = [PFQuery queryWithClassName:@"liftRequest"];
     [liftRequests includeKey:@"passengerUser"];
