@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PoolCellTableViewCell : UITableViewCell
+@interface PoolCellTableViewCell1 : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *poolDestination;
 @property (weak, nonatomic) IBOutlet UILabel *poolTime;

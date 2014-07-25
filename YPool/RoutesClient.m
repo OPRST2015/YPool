@@ -34,12 +34,10 @@
     
     [gs geocodeAddressSimple:fromAddress callback:^(PFGeoPoint *fromGeoPoint, NSError *fromError) {
         
-        NSLog(@"FROM ADDRESS: %@", fromGeoPoint);
+        // NSLog(@"FROM ADDRESS: %@", fromGeoPoint);
         [gs geocodeAddressSimple:toAddress callback:^(PFGeoPoint *toGeoPoint, NSError *toError) {
-            
-            
-            NSLog(@"TO ADDRESS: %@", toGeoPoint);
-            NSLog(@"TO ADDRESS: %f, %f", toGeoPoint.latitude, toGeoPoint.longitude);
+            // NSLog(@"TO ADDRESS: %@", toGeoPoint);
+            // NSLog(@"TO ADDRESS: %f, %f", toGeoPoint.latitude, toGeoPoint.longitude);
             
             
             [startPointQuery whereKey:@"geoPoint" nearGeoPoint:fromGeoPoint withinMiles:radius];

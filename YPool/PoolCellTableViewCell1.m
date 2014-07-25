@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Sudip. All rights reserved.
 //
 
-#import "PoolCellTableViewCell.h"
+#import "PoolCellTableViewCell1.h"
 
-@implementation PoolCellTableViewCell
+@implementation PoolCellTableViewCell1
 
 - (void)awakeFromNib
 {
