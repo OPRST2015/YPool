@@ -40,6 +40,7 @@
     self.tableView.dataSource = self;
     
     self.tableView.backgroundColor = nil;
+
     RoutesClient *rc = [RoutesClient instance];
     [rc getMyPublishedRoutes:^(NSArray *objects, NSError *error) {
         self.rides = objects;
@@ -75,8 +76,25 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.rides[indexPath.section][@"requestInfo"] count] > 0) {
         RideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideTableViewCell"];
-        PFUser *user = self.rides[indexPath.section][@"requestInfo"][indexPath.row][@"passengerUser"];
+        PFObject *requestInfo = self.rides[indexPath.section][@"requestInfo"][indexPath.row];
+        cell.data = requestInfo;
+        PFUser *user = requestInfo[@"passengerUser"];
         cell.userName.text = user[@"name"];
+        
+        if (![requestInfo[@"requestStatus"] isEqualToString:@"PENDING"]) {
+            cell.pendingView.hidden = YES;
+            cell.statusLabel.hidden = NO;
+            if ([requestInfo[@"requestStatus"] isEqualToString:@"ACCEPTED"]) {
+                cell.statusLabel.text = @"Accepted";
+                cell.statusLabel.textColor = [UIColor colorWithRed:14./255. green:107./255. blue:39./255. alpha:1.0];
+            } else {
+                cell.statusLabel.text = @"Declined";
+                cell.statusLabel.textColor = [UIColor redColor];
+            }
+        } else {
+            cell.pendingView.hidden = NO;
+            cell.statusLabel.hidden = YES;
+        }
         return cell;
     } else {
         RideEmptyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideEmptyTableViewCell"];
@@ -103,5 +121,6 @@
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
+
 
 @end
