@@ -87,11 +87,11 @@
     
     NSString *startLatString = self.selectedRoute[@"legs"][0][@"start_location"][@"lat"];
     float startLat = [startLatString floatValue];
-    NSString *startLongString = self.selectedRoute[@"legs"][0][@"start_location"][@"long"];
+    NSString *startLongString = self.selectedRoute[@"legs"][0][@"start_location"][@"lng"];
     float startLong = [startLongString floatValue];
     NSString *endLatString = self.selectedRoute[@"legs"][0][@"end_location"][@"lat"];
     float endLat = [endLatString floatValue];
-    NSString *endLongString = self.selectedRoute[@"legs"][0][@"end_location"][@"long"];
+    NSString *endLongString = self.selectedRoute[@"legs"][0][@"end_location"][@"lng"];
     float endLong = [endLongString floatValue];
 
     
