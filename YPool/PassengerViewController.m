@@ -62,7 +62,7 @@
     if (![self.sourceTextField.text isEqualToString:@""] && ![self.destinationTextField.text isEqualToString:@""]) {
         RoutesClient *routesClient = [RoutesClient instance];
         
-        [routesClient getMatchingRoutes:self.sourceTextField.text dest:self.destinationTextField.text radius:20.0 callback:^(NSArray *objects, NSError *error) {
+        [routesClient getMatchingRoutes:self.sourceTextField.text dest:self.destinationTextField.text radius:5.0 callback:^(NSArray *objects, NSError *error) {
             
             if ([objects count]) {
                 self.noRoutesFound = NO;
