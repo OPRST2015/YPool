@@ -10,6 +10,7 @@
 #import "RoutesClient.h"
 #import "RideHeaderCell.h"
 #import "RideTableViewCell.h"
+#import "RideEmptyTableViewCell.h"
 
 @interface ShowRidesController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,6 +49,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"RideHeaderCell" bundle:nil] forCellReuseIdentifier:@"RideHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RideTableViewCell" bundle:nil] forCellReuseIdentifier:@"RideTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RideEmptyTableViewCell" bundle:nil] forCellReuseIdentifier:@"RideEmptyTableViewCell"];
+
 }
 
 
@@ -70,16 +73,19 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideTableViewCell"];
     if ([self.rides[indexPath.section][@"requestInfo"] count] > 0) {
+        RideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideTableViewCell"];
         PFUser *user = self.rides[indexPath.section][@"requestInfo"][indexPath.row][@"passengerUser"];
-        cell.userName.text = @"Sudip Shah";
+        cell.userName.text = user[@"name"];
+        return cell;
+    } else {
+        RideEmptyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideEmptyTableViewCell"];
+        return cell;
     }
-    return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40;
+    return 63;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,7 +94,12 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     RideHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideHeaderCell"];
-    cell.destinationLabel.text =self.rides[section][@"routeInfo"][@"endPlace"];
+    PFObject *routeInfo = self.rides[section][@"routeInfo"];
+    cell.destinationLabel.text = routeInfo[@"endPlace"];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:routeInfo[@"startTime"] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    
+    cell.timeLabel.text = dateString;
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }

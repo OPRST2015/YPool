@@ -57,6 +57,8 @@
 		791B484D19822B2B00EA3411 /* RideHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791B484B19822B2B00EA3411 /* RideHeaderCell.xib */; };
 		791B48511982314600EA3411 /* RideTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B484F1982314600EA3411 /* RideTableViewCell.m */; };
 		791B48521982314600EA3411 /* RideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791B48501982314600EA3411 /* RideTableViewCell.xib */; };
+		791B4856198238EA00EA3411 /* RideEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B4854198238EA00EA3411 /* RideEmptyTableViewCell.m */; };
+		791B4857198238EA00EA3411 /* RideEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791B4855198238EA00EA3411 /* RideEmptyTableViewCell.xib */; };
 		9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */; };
 		9B14FF151981CB5B00620C53 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF0D1981CB5B00620C53 /* PassengerViewController.xib */; };
 		9B14FF161981CB5B00620C53 /* PoolTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0F1981CB5B00620C53 /* PoolTableViewCell.m */; };
@@ -152,6 +154,9 @@
 		791B484E1982314600EA3411 /* RideTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideTableViewCell.h; sourceTree = "<group>"; };
 		791B484F1982314600EA3411 /* RideTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideTableViewCell.m; sourceTree = "<group>"; };
 		791B48501982314600EA3411 /* RideTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RideTableViewCell.xib; sourceTree = "<group>"; };
+		791B4853198238EA00EA3411 /* RideEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RideEmptyTableViewCell.h; sourceTree = "<group>"; };
+		791B4854198238EA00EA3411 /* RideEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RideEmptyTableViewCell.m; sourceTree = "<group>"; };
+		791B4855198238EA00EA3411 /* RideEmptyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RideEmptyTableViewCell.xib; sourceTree = "<group>"; };
 		995025E51F4D4621AFE319D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B14FF0B1981CB5B00620C53 /* PassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerViewController.h; sourceTree = "<group>"; };
 		9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerViewController.m; sourceTree = "<group>"; };
@@ -353,6 +358,9 @@
 				791B484E1982314600EA3411 /* RideTableViewCell.h */,
 				791B484F1982314600EA3411 /* RideTableViewCell.m */,
 				791B48501982314600EA3411 /* RideTableViewCell.xib */,
+				791B4853198238EA00EA3411 /* RideEmptyTableViewCell.h */,
+				791B4854198238EA00EA3411 /* RideEmptyTableViewCell.m */,
+				791B4855198238EA00EA3411 /* RideEmptyTableViewCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -478,6 +486,7 @@
 				9B76C07519821495004F02ED /* PoolTableViewCell1.xib in Resources */,
 				4C266F271981790B00118E2E /* MainViewController.xib in Resources */,
 				9B14FF221981DC3900620C53 /* statusNewPool.png in Resources */,
+				791B4857198238EA00EA3411 /* RideEmptyTableViewCell.xib in Resources */,
 				791B4848198224F500EA3411 /* ShowRidesController.xib in Resources */,
 				4C266F07198178ED00118E2E /* Images.xcassets in Resources */,
 				42422E471981BF62004CF068 /* SignupViewController.xib in Resources */,
@@ -549,6 +558,7 @@
 				42DA3C991982093D0097DFD7 /* RoutesClient.m in Sources */,
 				9B76C07319821486004F02ED /* PoolTableViewCell1.m in Sources */,
 				9B14FF161981CB5B00620C53 /* PoolTableViewCell.m in Sources */,
+				791B4856198238EA00EA3411 /* RideEmptyTableViewCell.m in Sources */,
 				791B48431981ECF100EA3411 /* GoogleMapViewService.m in Sources */,
 				9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */,
 				791B483A1981D9D000EA3411 /* GCGeocodingService.m in Sources */,

@@ -10,5 +10,6 @@
 
 @interface RideHeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *destinationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
