@@ -49,6 +49,7 @@
 		791B482F1981CDD300EA3411 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791B482D1981CDD300EA3411 /* MapViewController.xib */; };
 		791B483A1981D9D000EA3411 /* GCGeocodingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48371981D9D000EA3411 /* GCGeocodingService.m */; };
 		791B483B1981D9D000EA3411 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48391981D9D000EA3411 /* MDDirectionService.m */; };
+		791B48431981ECF100EA3411 /* GoogleMapViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48421981ECF100EA3411 /* GoogleMapViewService.m */; };
 		9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */; };
 		9B14FF151981CB5B00620C53 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF0D1981CB5B00620C53 /* PassengerViewController.xib */; };
 		9B14FF161981CB5B00620C53 /* PoolCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0F1981CB5B00620C53 /* PoolCellTableViewCell.m */; };
@@ -126,6 +127,8 @@
 		791B48371981D9D000EA3411 /* GCGeocodingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGeocodingService.m; sourceTree = "<group>"; };
 		791B48381981D9D000EA3411 /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
 		791B48391981D9D000EA3411 /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
+		791B48411981ECF100EA3411 /* GoogleMapViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapViewService.h; sourceTree = "<group>"; };
+		791B48421981ECF100EA3411 /* GoogleMapViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapViewService.m; sourceTree = "<group>"; };
 		995025E51F4D4621AFE319D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B14FF0B1981CB5B00620C53 /* PassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerViewController.h; sourceTree = "<group>"; };
 		9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerViewController.m; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				791B482B1981CDD300EA3411 /* MapViewController.h */,
 				791B482C1981CDD300EA3411 /* MapViewController.m */,
 				791B482D1981CDD300EA3411 /* MapViewController.xib */,
+				791B48411981ECF100EA3411 /* GoogleMapViewService.h */,
+				791B48421981ECF100EA3411 /* GoogleMapViewService.m */,
 			);
 			path = YPool;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				42422E461981BF62004CF068 /* SignupViewController.m in Sources */,
 				42422E3C19818C60004CF068 /* LoginViewController.m in Sources */,
 				9B14FF161981CB5B00620C53 /* PoolCellTableViewCell.m in Sources */,
+				791B48431981ECF100EA3411 /* GoogleMapViewService.m in Sources */,
 				9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */,
 				791B483A1981D9D000EA3411 /* GCGeocodingService.m in Sources */,
 				791B482E1981CDD300EA3411 /* MapViewController.m in Sources */,
