@@ -14,6 +14,7 @@
 + (RoutesClient *) instance;
 
 - (void) getMatchingRoutes:(NSString *)start dest:(NSString *)dest radius:(float)radius callback:(void (^)(NSArray *objects, NSError *error)) callback;
-- (void) getMyRoutes: (void (^)(NSArray *objects, NSError *error)) callback;
+- (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback;
+- (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback;
 
 @end

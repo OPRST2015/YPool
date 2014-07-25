@@ -64,10 +64,11 @@
 
     RoutesClient *routesClient = [RoutesClient instance];
     
-    [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
-        NSLog(@"matched routes %@", objects);
-    }];
-    
+//    [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
+//        NSLog(@"matched routes %@", objects);
+//    }];
+//    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
