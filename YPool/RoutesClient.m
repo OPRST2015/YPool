@@ -120,7 +120,8 @@
                                 @"time" :  stringFromDate,
                                 @"seats" : [NSString stringWithFormat:@"%@ Seats",route[@"numberOfSeats"]],
                          @"name" : name,
-                         @"phone" : phone
+                         @"phone" : phone,
+                         @"rawRoute" : route
                                 };
     //NSLog(@"New Dictionary: %@", d);
     return [d copy];
