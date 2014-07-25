@@ -38,6 +38,36 @@
     });
     
 }
+
+- (void) geocodeAddressSimple:(NSString *)address callback:(void (^)(NSData *data, NSError *error)) callback {
+    NSString *geocodingBaseUrl = @"http://maps.googleapis.com/maps/api/geocode/json?";
+    NSString *url = [NSString stringWithFormat:@"%@address=%@&sensor=false", geocodingBaseUrl,address];
+    url = [url stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    
+    NSURL *queryUrl = [NSURL URLWithString:url];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSData *data = [NSData dataWithContentsOfURL: queryUrl];
+        NSError *error;
+        
+        NSDictionary *json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              options:kNilOptions
+                              error:&error];
+        
+        NSArray* results = [json objectForKey:@"results"];
+        NSDictionary *result = [results objectAtIndex:0];
+        NSDictionary *geometry = [result objectForKey:@"geometry"];
+        NSDictionary *location = [geometry objectForKey:@"location"];
+        NSString *lat = [location objectForKey:@"lat"];
+        NSString *lng = [location objectForKey:@"lng"];
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:[lat floatValue] longitude:[lng floatValue]];
+        callback(geoPoint, nil);
+    });
+
+    
+}
+
 - (void)fetchedData:(NSData *)data withCallback:(SEL)sel withDelegate:(id)delegate{
     
     NSError* error;

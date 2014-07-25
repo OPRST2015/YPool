@@ -37,7 +37,7 @@
     
     RoutesClient *routesClient = [RoutesClient instance];
     
-    [routesClient getMatchingRoutes:@"" dest:@"" callback:^(NSArray *objects, NSError *error) {
+    [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
         NSLog(@"matched routes %@", objects);
     }];
     
