@@ -29,22 +29,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    PFQuery *query = [PFQuery queryWithClassName:@"publishedRoute"];
+    PFQuery *query = [PFQuery queryWithClassName:@"geoPoints"];
     [query includeKey:@"user"];
     [query orderByDescending:@"createdAt"];
 
     PFGeoPoint *userStartGeoPoint = [PFGeoPoint geoPointWithLatitude:37.35 longitude:-121.96];
     PFGeoPoint *userEndGeoPoint = [PFGeoPoint geoPointWithLatitude:37.38 longitude:-122.08];
-    [query whereKey:@"startPoint" nearGeoPoint:userStartGeoPoint withinMiles:5.0];
+    [query whereKey:@"geoPoint" nearGeoPoint:userStartGeoPoint withinMiles:5.0];
+    [query whereKey:@"startPoint" equalTo:@(YES)];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             NSLog(@"results: %@", objects);
-            PFQuery *endPointQuery = [PFQuery queryWithClassName:@"routeEndPoint"];
-            [endPointQuery whereKey:@"endPoint" nearGeoPoint:userEndGeoPoint withinMiles:5.0];
-            [endPointQuery whereKey:@"routeId" containedIn:objects];
+            PFQuery *endPointQuery = [PFQuery queryWithClassName:@"geoPoints"];
+            [endPointQuery whereKey:@"geoPoint" nearGeoPoint:userEndGeoPoint withinMiles:5.0];
+            [endPointQuery whereKey:@"endPoint" equalTo:@(YES)];
+            [endPointQuery selectKeys:@[@"objectId"]];
+            NSArray *matchingRoutes = [endPointQuery findObjects];
+
             
-            NSArray *allObjects = [endPointQuery findObjects];
+            PFQuery *routeQuery = [PFQuery queryWithClassName:@"publishedRoute"];
+            [routeQuery whereKey:@"objectId" containedIn: matchingRoutes];
+            NSArray *allObjects = [routeQuery findObjects];
+            
             NSLog(@"all objects %@", allObjects);
             
         } else {
