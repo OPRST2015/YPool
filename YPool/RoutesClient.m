@@ -73,7 +73,9 @@
                                 PFObject *route = endPointObject[@"routeId"];
                                 // NSLog(@"end point object id %@", route.objectId);
                                 if([routeDict valueForKey:route.objectId] != nil) {
-                                    [validRoutes addObject:route];
+                                    // we have a PFObject with one RouteID
+                                    
+                                    [validRoutes addObject:[self convertPFObjectToDisctionary:route]];
                                 }
                             }
                             callback(validRoutes, nil);
@@ -92,6 +94,11 @@
             
         }];
     }];
+}
+
+- (NSDictionary *)convertPFObjectToDisctionary:(PFObject *)route {
+    NSMutableDictionary *d;
+    return [d copy];
 }
 
 - (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
