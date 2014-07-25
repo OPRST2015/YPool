@@ -125,4 +125,10 @@
 
 }
 
+- (void) postMyRequest {
+    PFQuer
+}
+
+
+
 @end
