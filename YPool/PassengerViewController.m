@@ -35,6 +35,33 @@
     // Do any additional setup after loading the view from its nib.
     self.poolSelected = nil;
     
+//    PFQuery *query = [PFQuery queryWithClassName:@"publishedRoute"];
+//    [query orderByDescending:@"createdAt"];
+//    
+//    //    [query whereKey:@"startPoint" equalTo:@(YES)];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            NSLog(@"results: %@", objects);
+//            for (int i=0; i<objects.count; i++) {
+//                PFObject *str = objects[i];
+//                NSString *endP = str[@"endPlace"];
+//                NSString *routeD = str[@"routeDetail"];
+//                
+//                NSDictionary *info = [NSJSONSerialization
+//                                      JSONObjectWithData:[routeD dataUsingEncoding:NSUTF8StringEncoding]
+//                                      options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves)
+//                                      error:&error];
+//
+//                NSLog(@"results: %@", info);
+//            }
+//            
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+
     RoutesClient *routesClient = [RoutesClient instance];
     
     [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
