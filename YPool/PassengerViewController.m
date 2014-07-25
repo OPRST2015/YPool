@@ -52,6 +52,8 @@
 
     [self getMatchingRoutesData];
 
+    self.destinationTextField.returnKeyType = UIReturnKeySearch;
+    self.sourceTextField.returnKeyType = UIReturnKeySearch;
     
     [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
     [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell1" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell1"];

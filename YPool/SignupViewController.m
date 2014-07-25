@@ -35,7 +35,10 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
-
+    self.phoneTextField.delegate = self;
+    self.nameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.usernameTextField.delegate = self;
     // Do any additional setup after loading the view from its nib.
     UIGestureRecognizer *tapper = [[UITapGestureRecognizer alloc]
               initWithTarget:self action:@selector(handleSingleTap:)];
@@ -76,6 +79,11 @@
         }
     }];
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
