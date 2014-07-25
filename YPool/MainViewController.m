@@ -12,11 +12,13 @@
 #import <Parse/Parse.h>
 #import "PassengerViewController.h"
 #import "MapViewController.h"
+#import "ShowRidesController.h"
 
 @interface MainViewController ()
 - (IBAction)onDriverButton:(id)sender;
 - (IBAction)onYpoolerButton:(id)sender;
 - (IBAction)onLogout:(id)sender;
+- (IBAction)onShowRides:(id)sender;
 
 @end
 
@@ -68,6 +70,12 @@
     [PFUser logOut];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];
 }
+
+- (IBAction)onShowRides:(id)sender {
+    ShowRidesController *srvc = [[ShowRidesController alloc] init];
+    [self.navigationController pushViewController:srvc animated:YES];
+}
+
 
 
 

@@ -104,26 +104,28 @@
     routeStartPoint[@"endPoint"] = @(NO);
     
     [routeStartPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        // success
-        NSLog(@"saved start point");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"EndPointPublished" object:nil];
-    }];
-    
-    // save routeEndPoint object (to ease querying)
-    PFObject *routeEndPoint = [PFObject objectWithClassName:@"geoPoints"];
-    PFGeoPoint *endPoint = [PFGeoPoint geoPointWithLatitude:endLat longitude:endLong];
-    
-    routeEndPoint[@"routeId"] = route;
-    routeEndPoint[@"geoPoint"] = endPoint;
-    routeEndPoint[@"startPoint"] = @(NO);
-    routeEndPoint[@"endPoint"] = @(YES);
-    
-    [routeEndPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        // success
-        NSLog(@"saved end point");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"EndPointPublished" object:nil];
-    }];
+        // save routeEndPoint object (to ease querying)
+        PFObject *routeEndPoint = [PFObject objectWithClassName:@"geoPoints"];
+        PFGeoPoint *endPoint = [PFGeoPoint geoPointWithLatitude:endLat longitude:endLong];
+        
+        routeEndPoint[@"routeId"] = route;
+        routeEndPoint[@"geoPoint"] = endPoint;
+        routeEndPoint[@"startPoint"] = @(NO);
+        routeEndPoint[@"endPoint"] = @(YES);
+        
+        [routeEndPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            // success
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Route Saved Successfully"
+                                                                message:[error localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }];
 
+    }];
+    
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
