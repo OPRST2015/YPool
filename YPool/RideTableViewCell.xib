@@ -49,6 +49,9 @@
                     <constraint firstAttribute="trailing" secondItem="sEr-qP-1OF" secondAttribute="trailing" constant="131" id="zkM-xQ-a57"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="userName" destination="sEr-qP-1OF" id="adh-GK-Bcp"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

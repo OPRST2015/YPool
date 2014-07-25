@@ -71,6 +71,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideTableViewCell"];
+    if ([self.rides[indexPath.section][@"requestInfo"] count] > 0) {
+        PFUser *user = self.rides[indexPath.section][@"requestInfo"][indexPath.row][@"passengerUser"];
+        cell.userName.text = @"Sudip Shah";
+    }
     return cell;
 }
 
