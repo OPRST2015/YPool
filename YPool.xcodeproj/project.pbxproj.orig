@@ -19,7 +19,6 @@
 		4C266EFF198178ED00118E2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C266EFD198178ED00118E2E /* InfoPlist.strings */; };
 		4C266F01198178ED00118E2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F00198178ED00118E2E /* main.m */; };
 		4C266F05198178ED00118E2E /* TDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C266F04198178ED00118E2E /* TDLAppDelegate.m */; };
-		4C266F07198178ED00118E2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F06198178ED00118E2E /* Images.xcassets */; };
 		4C266F0E198178ED00118E2E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266F0D198178ED00118E2E /* XCTest.framework */; };
 		4C266F0F198178ED00118E2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266EF4198178ED00118E2E /* Foundation.framework */; };
 		4C266F10198178ED00118E2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C266EF8198178ED00118E2E /* UIKit.framework */; };
@@ -31,7 +30,7 @@
 		4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */; };
 		4C266F311981B1D900118E2E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		4C266F321981B1D900118E2E /* (null) in Resources */ = {isa = PBXBuildFile; };
-<<<<<<< HEAD
+		4C266F341981EE6800118E2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C266F331981EE6800118E2E /* Images.xcassets */; };
 		791B48091981CC4800EA3411 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791B48081981CC4800EA3411 /* GoogleMaps.framework */; };
 		791B480B1981CC5B00EA3411 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 791B480A1981CC5B00EA3411 /* GoogleMaps.bundle */; };
 		791B480D1981CC9800EA3411 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791B480C1981CC9800EA3411 /* AVFoundation.framework */; };
@@ -46,18 +45,21 @@
 		791B481F1981CCD200EA3411 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791B481E1981CCD200EA3411 /* OpenGLES.framework */; };
 		791B48211981CCD700EA3411 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791B48201981CCD700EA3411 /* QuartzCore.framework */; };
 		791B48231981CCE000EA3411 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791B48221981CCE000EA3411 /* SystemConfiguration.framework */; };
-		791B48281981CD7500EA3411 /* GCGeocodingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48251981CD7500EA3411 /* GCGeocodingService.m */; };
-		791B48291981CD7500EA3411 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48271981CD7500EA3411 /* MDDirectionService.m */; };
 		791B482E1981CDD300EA3411 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B482C1981CDD300EA3411 /* MapViewController.m */; };
 		791B482F1981CDD300EA3411 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 791B482D1981CDD300EA3411 /* MapViewController.xib */; };
-=======
+		791B483A1981D9D000EA3411 /* GCGeocodingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48371981D9D000EA3411 /* GCGeocodingService.m */; };
+		791B483B1981D9D000EA3411 /* MDDirectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 791B48391981D9D000EA3411 /* MDDirectionService.m */; };
 		9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */; };
 		9B14FF151981CB5B00620C53 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF0D1981CB5B00620C53 /* PassengerViewController.xib */; };
 		9B14FF161981CB5B00620C53 /* PoolCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF0F1981CB5B00620C53 /* PoolCellTableViewCell.m */; };
 		9B14FF171981CB5B00620C53 /* PoolCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF101981CB5B00620C53 /* PoolCellTableViewCell.xib */; };
 		9B14FF181981CB5B00620C53 /* PoolSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14FF121981CB5B00620C53 /* PoolSelectionViewController.m */; };
 		9B14FF191981CB5B00620C53 /* PoolSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF131981CB5B00620C53 /* PoolSelectionViewController.xib */; };
->>>>>>> a13791b12ed1eab6f5a93fa17af0a9c004709c52
+		9B14FF201981DC3900620C53 /* statusAcceptPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1B1981DC3900620C53 /* statusAcceptPool.png */; };
+		9B14FF211981DC3900620C53 /* statusConfirmPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1C1981DC3900620C53 /* statusConfirmPool.png */; };
+		9B14FF221981DC3900620C53 /* statusNewPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1D1981DC3900620C53 /* statusNewPool.png */; };
+		9B14FF231981DC3900620C53 /* statusRejectPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1E1981DC3900620C53 /* statusRejectPool.png */; };
+		9B14FF241981DC3900620C53 /* statusRequestPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14FF1F1981DC3900620C53 /* statusRequestPool.png */; };
 		B18CF97F03D343C3A4891A86 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995025E51F4D4621AFE319D7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +93,6 @@
 		4C266F02198178ED00118E2E /* YPool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YPool-Prefix.pch"; sourceTree = "<group>"; };
 		4C266F03198178ED00118E2E /* TDLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDLAppDelegate.h; sourceTree = "<group>"; };
 		4C266F04198178ED00118E2E /* TDLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDLAppDelegate.m; sourceTree = "<group>"; };
-		4C266F06198178ED00118E2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C266F0C198178ED00118E2E /* YPoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YPoolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C266F0D198178ED00118E2E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4C266F15198178ED00118E2E /* YPoolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YPoolTests-Info.plist"; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		4C266F2819817AEE00118E2E /* StartTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartTimeViewController.h; sourceTree = "<group>"; };
 		4C266F2919817AEE00118E2E /* StartTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartTimeViewController.m; sourceTree = "<group>"; };
 		4C266F2A19817AEE00118E2E /* StartTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartTimeViewController.xib; sourceTree = "<group>"; };
+		4C266F331981EE6800118E2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		791B48081981CC4800EA3411 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		791B480A1981CC5B00EA3411 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		791B480C1981CC9800EA3411 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -117,13 +119,13 @@
 		791B481E1981CCD200EA3411 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		791B48201981CCD700EA3411 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		791B48221981CCE000EA3411 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		791B48241981CD7500EA3411 /* GCGeocodingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCGeocodingService.h; path = ../../Desktop/CarPool/CarPool/GCGeocodingService.h; sourceTree = "<group>"; };
-		791B48251981CD7500EA3411 /* GCGeocodingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCGeocodingService.m; path = ../../Desktop/CarPool/CarPool/GCGeocodingService.m; sourceTree = "<group>"; };
-		791B48261981CD7500EA3411 /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDDirectionService.h; path = ../../Desktop/CarPool/CarPool/MDDirectionService.h; sourceTree = "<group>"; };
-		791B48271981CD7500EA3411 /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDDirectionService.m; path = ../../Desktop/CarPool/CarPool/MDDirectionService.m; sourceTree = "<group>"; };
 		791B482B1981CDD300EA3411 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		791B482C1981CDD300EA3411 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		791B482D1981CDD300EA3411 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		791B48361981D9D000EA3411 /* GCGeocodingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCGeocodingService.h; sourceTree = "<group>"; };
+		791B48371981D9D000EA3411 /* GCGeocodingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCGeocodingService.m; sourceTree = "<group>"; };
+		791B48381981D9D000EA3411 /* MDDirectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDirectionService.h; sourceTree = "<group>"; };
+		791B48391981D9D000EA3411 /* MDDirectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDirectionService.m; sourceTree = "<group>"; };
 		995025E51F4D4621AFE319D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B14FF0B1981CB5B00620C53 /* PassengerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassengerViewController.h; sourceTree = "<group>"; };
 		9B14FF0C1981CB5B00620C53 /* PassengerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassengerViewController.m; sourceTree = "<group>"; };
@@ -134,6 +136,11 @@
 		9B14FF111981CB5B00620C53 /* PoolSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolSelectionViewController.h; sourceTree = "<group>"; };
 		9B14FF121981CB5B00620C53 /* PoolSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolSelectionViewController.m; sourceTree = "<group>"; };
 		9B14FF131981CB5B00620C53 /* PoolSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PoolSelectionViewController.xib; sourceTree = "<group>"; };
+		9B14FF1B1981DC3900620C53 /* statusAcceptPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusAcceptPool.png; sourceTree = "<group>"; };
+		9B14FF1C1981DC3900620C53 /* statusConfirmPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusConfirmPool.png; sourceTree = "<group>"; };
+		9B14FF1D1981DC3900620C53 /* statusNewPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusNewPool.png; sourceTree = "<group>"; };
+		9B14FF1E1981DC3900620C53 /* statusRejectPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusRejectPool.png; sourceTree = "<group>"; };
+		9B14FF1F1981DC3900620C53 /* statusRequestPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusRequestPool.png; sourceTree = "<group>"; };
 		9D606024DF01482F95D1E3DD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,14 +231,15 @@
 		4C266EFA198178ED00118E2E /* YPool */ = {
 			isa = PBXGroup;
 			children = (
-				791B48241981CD7500EA3411 /* GCGeocodingService.h */,
-				791B48251981CD7500EA3411 /* GCGeocodingService.m */,
-				791B48261981CD7500EA3411 /* MDDirectionService.h */,
-				791B48271981CD7500EA3411 /* MDDirectionService.m */,
+				4C266F331981EE6800118E2E /* Images.xcassets */,
+				791B48361981D9D000EA3411 /* GCGeocodingService.h */,
+				791B48371981D9D000EA3411 /* GCGeocodingService.m */,
+				791B48381981D9D000EA3411 /* MDDirectionService.h */,
+				791B48391981D9D000EA3411 /* MDDirectionService.m */,
+				9B14FF1A1981DC3900620C53 /* statusImages */,
 				4C266F2D19817AFC00118E2E /* View Controllers */,
 				4C266F03198178ED00118E2E /* TDLAppDelegate.h */,
 				4C266F04198178ED00118E2E /* TDLAppDelegate.m */,
-				4C266F06198178ED00118E2E /* Images.xcassets */,
 				4C266EFB198178ED00118E2E /* Supporting Files */,
 				791B482B1981CDD300EA3411 /* MapViewController.h */,
 				791B482C1981CDD300EA3411 /* MapViewController.m */,
@@ -298,6 +306,18 @@
 				9B14FF131981CB5B00620C53 /* PoolSelectionViewController.xib */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9B14FF1A1981DC3900620C53 /* statusImages */ = {
+			isa = PBXGroup;
+			children = (
+				9B14FF1B1981DC3900620C53 /* statusAcceptPool.png */,
+				9B14FF1C1981DC3900620C53 /* statusConfirmPool.png */,
+				9B14FF1D1981DC3900620C53 /* statusNewPool.png */,
+				9B14FF1E1981DC3900620C53 /* statusRejectPool.png */,
+				9B14FF1F1981DC3900620C53 /* statusRequestPool.png */,
+			);
+			path = statusImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,20 +398,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				791B480B1981CC5B00EA3411 /* GoogleMaps.bundle in Resources */,
-=======
 				9B14FF171981CB5B00620C53 /* PoolCellTableViewCell.xib in Resources */,
->>>>>>> a13791b12ed1eab6f5a93fa17af0a9c004709c52
+				9B14FF211981DC3900620C53 /* statusConfirmPool.png in Resources */,
+				791B480B1981CC5B00EA3411 /* GoogleMaps.bundle in Resources */,
 				42422E3D19818C60004CF068 /* LoginViewController.xib in Resources */,
+<<<<<<< Updated upstream
+				9B14FF231981DC3900620C53 /* statusRejectPool.png in Resources */,
+				9B14FF201981DC3900620C53 /* statusAcceptPool.png in Resources */,
+=======
+				4C266F341981EE6800118E2E /* Images.xcassets in Resources */,
+>>>>>>> Stashed changes
 				4C266F2C19817AEE00118E2E /* StartTimeViewController.xib in Resources */,
 				791B482F1981CDD300EA3411 /* MapViewController.xib in Resources */,
 				4C266F321981B1D900118E2E /* (null) in Resources */,
 				4C266EFF198178ED00118E2E /* InfoPlist.strings in Resources */,
 				9B14FF191981CB5B00620C53 /* PoolSelectionViewController.xib in Resources */,
+				9B14FF241981DC3900620C53 /* statusRequestPool.png in Resources */,
 				9B14FF151981CB5B00620C53 /* PassengerViewController.xib in Resources */,
 				4C266F271981790B00118E2E /* MainViewController.xib in Resources */,
+<<<<<<< Updated upstream
+				9B14FF221981DC3900620C53 /* statusNewPool.png in Resources */,
 				4C266F07198178ED00118E2E /* Images.xcassets in Resources */,
+=======
+>>>>>>> Stashed changes
 				42422E471981BF62004CF068 /* SignupViewController.xib in Resources */,
 				42422E421981B9A0004CF068 /* ParseQueryViewController.xib in Resources */,
 			);
@@ -445,23 +474,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				791B48291981CD7500EA3411 /* MDDirectionService.m in Sources */,
 				4C266F2B19817AEE00118E2E /* StartTimeViewController.m in Sources */,
 				4C266F311981B1D900118E2E /* (null) in Sources */,
+				791B483B1981D9D000EA3411 /* MDDirectionService.m in Sources */,
 				9B14FF181981CB5B00620C53 /* PoolSelectionViewController.m in Sources */,
 				42422E411981B9A0004CF068 /* ParseQueryViewController.m in Sources */,
 				4C266F01198178ED00118E2E /* main.m in Sources */,
-				791B48281981CD7500EA3411 /* GCGeocodingService.m in Sources */,
 				4C266F261981790B00118E2E /* MainViewController.m in Sources */,
 				4C266F05198178ED00118E2E /* TDLAppDelegate.m in Sources */,
 				42422E461981BF62004CF068 /* SignupViewController.m in Sources */,
 				42422E3C19818C60004CF068 /* LoginViewController.m in Sources */,
-<<<<<<< HEAD
-				791B482E1981CDD300EA3411 /* MapViewController.m in Sources */,
-=======
 				9B14FF161981CB5B00620C53 /* PoolCellTableViewCell.m in Sources */,
 				9B14FF141981CB5B00620C53 /* PassengerViewController.m in Sources */,
->>>>>>> a13791b12ed1eab6f5a93fa17af0a9c004709c52
+				791B483A1981D9D000EA3411 /* GCGeocodingService.m in Sources */,
+				791B482E1981CDD300EA3411 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
