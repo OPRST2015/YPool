@@ -10,4 +10,5 @@
 
 @interface RideTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *userName;
 @end

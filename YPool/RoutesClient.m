@@ -110,6 +110,7 @@
 
             // NSLog(@"route is %@", route.objectId);
             [liftRequestQuery whereKey:@"routeId" equalTo:route];
+            [liftRequestQuery includeKey:@"passengeUser"];
             NSArray *requests = [liftRequestQuery findObjects];
             // NSLog(@"requests for route:  %@, %@", route.objectId, requests);
             
