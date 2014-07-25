@@ -7,7 +7,7 @@
 //
 
 #import "PassengerViewController.h"
-#import "PoolCellTableViewCell.h"
+#import "PoolTableViewCell.h"
 #import "PoolSelectionViewController.h"
 #import <Parse/Parse.h>
 #import "RoutesClient.h"
@@ -99,7 +99,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PoolCellTableViewCell *cell;
+    PoolTableViewCell *cell;
     NSDictionary *pool;
     NSDictionary *passengers;
     cell = [tableView dequeueReusableCellWithIdentifier:@"poolCell" forIndexPath:indexPath];
