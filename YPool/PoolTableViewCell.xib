@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-ck-6Xl">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="poolee-route-table-bkg.png" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-ck-6Xl">
                         <rect key="frame" x="8" y="3" width="305" height="79"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -71,4 +71,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="poolee-route-table-bkg.png" width="611" height="158"/>
+    </resources>
 </document>

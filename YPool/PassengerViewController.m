@@ -14,6 +14,8 @@
 
 @interface PassengerViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *selectionImageView;
 @property (weak, nonatomic) IBOutlet UITableView *poolTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *poolMapImageView;
 
@@ -32,8 +34,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+    
     self.poolSelected = nil;
+    self.poolTableView.delegate = self;
+    self.poolTableView.dataSource = self;
     
 //    PFQuery *query = [PFQuery queryWithClassName:@"publishedRoute"];
 //    [query orderByDescending:@"createdAt"];
@@ -68,6 +76,7 @@
         NSLog(@"matched routes %@", objects);
     }];
     
+    [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +86,8 @@
     // (re)load data table of routes
     // *** need to add read data here
     self.poolData = nil;
+//    self.backgroundImageView.image = [UIImage imageNamed:@"poolee-bkg.png"];
+//    self.selectionImageView.image = [UIImage imageNamed:@"poolee-select-destination.png"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,11 +96,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backButtonAction:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -102,10 +118,10 @@
     PoolTableViewCell *cell;
     NSDictionary *pool;
     NSDictionary *passengers;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"poolCell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"PoolTableViewCell" forIndexPath:indexPath];
     
     // use custom cell
-    cell.poolCellBackgroundImage.image = [UIImage imageNamed:@"poolee-route-table-bkg.png"];
+//    cell.poolCellBackgroundImage.image = [UIImage imageNamed:@"poolee-route-table-bkg.png"];
     cell.poolSource.text = pool[@"source"];
     cell.poolDestination.text = pool[@"destination"];
     cell.poolTime.text = pool[@"time"];
@@ -153,7 +169,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"indexPath: (%d),(%d)", (int)indexPath.section, (int)indexPath.row);
     self.poolSelected = self.poolData[indexPath.row];
+
     // row is selected
+    [self poolSelectedAction:self];
     
     // now update map using self.poolMapImageView
     

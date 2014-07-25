@@ -58,8 +58,9 @@
     // NSLog(@"I am looking for a Ypool");
 //    ParseQueryViewController *parseVC = [[ParseQueryViewController alloc] init];
 //    [self presentViewController:parseVC animated:YES completion:nil];
-    PassengerViewController * passengerViewController = [[PassengerViewController alloc] init];
-    [self presentViewController:passengerViewController animated:YES completion:nil];
+    PassengerViewController *passengerViewController = [[PassengerViewController alloc] init];
+//    [self presentViewController:passengerViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:passengerViewController animated:YES];
 
 }
 
