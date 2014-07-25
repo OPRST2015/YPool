@@ -17,6 +17,7 @@
 {
     // Initialization code
     rc = [RoutesClient instance];
+    self.pendingView.backgroundColor = [UIColor colorWithRed:240./255. green:244./255. blue:246./255. alpha:1.0];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
