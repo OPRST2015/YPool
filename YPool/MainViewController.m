@@ -13,12 +13,14 @@
 #import "PassengerViewController.h"
 #import "MapViewController.h"
 #import "ShowRidesController.h"
+#import "RoutesClient.h"
 
 @interface MainViewController ()
 - (IBAction)onDriverButton:(id)sender;
 - (IBAction)onYpoolerButton:(id)sender;
 - (IBAction)onLogout:(id)sender;
 - (IBAction)onShowRides:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *notificationCount;
 
 @end
 
@@ -38,11 +40,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.hidden = YES;
+    self.notificationCount.hidden = YES;
+    [self getNotifications];
 }
 
--(void) viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
+    [self getNotifications];
 }
+
+- (void) getNotifications {
+    RoutesClient *rc = [RoutesClient instance];
+    
+    [rc getPendingInviteCount:^(NSInteger count, NSError *error) {
+        if (count>0) {
+            self.notificationCount.hidden = NO;
+            self.notificationCount.text = [NSString stringWithFormat:@"%d", count];
+        } else {
+            self.notificationCount.hidden = YES;
+        }
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

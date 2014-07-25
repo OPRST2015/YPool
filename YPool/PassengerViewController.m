@@ -206,7 +206,7 @@
         PoolSelectionViewController *poolSelectionViewController = [[PoolSelectionViewController alloc] init];
         poolSelectionViewController.selectedPool = self.poolSelected;
         
-        [self presentViewController:poolSelectionViewController animated:YES completion:nil];
+        [self.navigationController pushViewController:poolSelectionViewController animated:YES];
     }
     
 }
