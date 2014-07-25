@@ -6,10 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignupViewController">
             <connections>
-                <outlet property="nameTextField" destination="lMN-7M-Bfx" id="zvQ-Me-Y96"/>
-                <outlet property="passwordTextField" destination="FdU-Ki-ubg" id="g78-qU-ZIb"/>
+                <outlet property="nameTextField" destination="ZNI-gY-IpZ" id="FLi-Hd-STb"/>
+                <outlet property="passwordTextField" destination="lMN-7M-Bfx" id="xwk-aw-aBl"/>
                 <outlet property="phoneTextField" destination="SmV-Jo-6tb" id="CpH-kk-dna"/>
-                <outlet property="usernameTextField" destination="ZNI-gY-IpZ" id="QQc-MG-jO1"/>
+                <outlet property="usernameTextField" destination="FdU-Ki-ubg" id="qRV-Cl-eWv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
