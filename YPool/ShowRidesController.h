@@ -10,4 +10,6 @@
 
 @interface ShowRidesController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) NSString *type;
+
 @end

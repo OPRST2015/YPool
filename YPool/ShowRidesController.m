@@ -15,6 +15,7 @@
 @interface ShowRidesController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *rides;
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @end
 
@@ -33,20 +34,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     self.tableView.backgroundColor = nil;
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(goToHome)];
 
+    [UITabBarItem.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blueColor] }    forState:UIControlStateSelected];
+    self.headerLabel.text = self.type;
     RoutesClient *rc = [RoutesClient instance];
-    [rc getMyPublishedRoutes:^(NSArray *objects, NSError *error) {
-        self.rides = objects;
-        NSLog(@"%@", self.rides);
-        [self.tableView reloadData];
-    }];
+    if ([self.type isEqualToString:@"Rides"]) {
+        [rc getMyPublishedRoutes:^(NSArray *objects, NSError *error) {
+            self.rides = objects;
+            NSLog(@"%@", self.rides);
+            [self.tableView reloadData];
+        }];
+    } else {
+        [rc getMyRequestedRoutes:^(NSArray *objects, NSError *error) {
+            self.rides = objects;
+            NSLog(@"%@", self.rides);
+            [self.tableView reloadData];
+        }];
+    }
     
     [self.tableView registerNib:[UINib nibWithNibName:@"RideHeaderCell" bundle:nil] forCellReuseIdentifier:@"RideHeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"RideTableViewCell" bundle:nil] forCellReuseIdentifier:@"RideTableViewCell"];
@@ -54,6 +65,10 @@
 
 }
 
+
+- (void) goToHome {
+    [self.parentViewController.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -95,9 +110,13 @@
             cell.pendingView.hidden = NO;
             cell.statusLabel.hidden = YES;
         }
+        
+        cell.backgroundColor = [UIColor colorWithRed:240./255. green:244./255. blue:246./255. alpha:1.0];
+        
         return cell;
     } else {
         RideEmptyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RideEmptyTableViewCell"];
+        cell.backgroundColor = [UIColor colorWithRed:240./255. green:244./255. blue:246./255. alpha:1.0];
         return cell;
     }
 }
@@ -118,7 +137,7 @@
     NSString *dateString = [NSDateFormatter localizedStringFromDate:routeInfo[@"startTime"] dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     
     cell.timeLabel.text = dateString;
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor colorWithRed:235./255. green:228./255. blue:251./255. alpha:1.0];
     return cell;
 }
 

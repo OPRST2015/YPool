@@ -73,8 +73,37 @@
 }
 
 - (IBAction)onShowRides:(id)sender {
-    ShowRidesController *srvc = [[ShowRidesController alloc] init];
-    [self.navigationController pushViewController:srvc animated:YES];
+    UITabBarController *tbc = [[UITabBarController alloc] init];
+    
+    ShowRidesController *ridesrc = [[ShowRidesController alloc] init];
+    ridesrc.type = @"Rides";
+    UINavigationController *ridesController = [[UINavigationController alloc] initWithRootViewController:ridesrc];
+    //[self.navigationController pushViewController:srvc animated:YES];
+    ridesController.tabBarItem.title = @"Rides";
+    [ridesController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -12)];
+    [ridesController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor blackColor], UITextAttributeTextColor,
+                                                          [NSValue valueWithUIOffset:UIOffsetMake(0,0)], UITextAttributeTextShadowOffset,
+                                                          [UIFont fontWithName:@"Helvetica" size:18.0], UITextAttributeFont, nil]
+                                                forState:UIControlStateNormal];
+
+    
+    ShowRidesController *reqsrc = [[ShowRidesController alloc] init];
+    reqsrc.type = @"Requests";
+    UINavigationController *requestController = [[UINavigationController alloc] initWithRootViewController:reqsrc];
+    requestController.tabBarItem.title = @"Requests";
+    [requestController.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -12)];
+    [requestController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIColor blackColor], UITextAttributeTextColor,
+                                            [NSValue valueWithUIOffset:UIOffsetMake(0,0)], UITextAttributeTextShadowOffset,
+                                            [UIFont fontWithName:@"Helvetica" size:18.0], UITextAttributeFont, nil]
+                                  forState:UIControlStateNormal];
+    
+    NSArray *controllers = [NSArray arrayWithObjects:ridesController, requestController, nil];
+    
+    tbc.viewControllers = controllers;
+    
+    [self.navigationController pushViewController:tbc animated:YES];
 }
 
 

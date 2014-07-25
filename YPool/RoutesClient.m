@@ -103,6 +103,7 @@
 
 - (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
     PFQuery *publishedRoutes = [PFQuery queryWithClassName:@"publishedRoute"];
+    [publishedRoutes orderByDescending:@"startTime"];
     [publishedRoutes includeKey:@"driverUser"];
     PFUser *currentUser = [PFUser currentUser];
     NSMutableArray *responseArray = [[NSMutableArray alloc] init];
@@ -129,7 +130,30 @@
     }];
 }
 
-- (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback {
+- (void) getMyRequestedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
+    PFQuery *liftRequests = [PFQuery queryWithClassName:@"liftRequest"];
+    [liftRequests includeKey:@"passengerUser"];
+    [liftRequests orderByDescending:@"createdAt"];
+
+    PFUser *currentUser = [PFUser currentUser];
+    
+    NSMutableArray *responseArray = [[NSMutableArray alloc] init];
+    
+    [liftRequests whereKey:@"passengerUser" equalTo:currentUser];
+    [liftRequests includeKey:@"routeId"];
+    
+    [liftRequests findObjectsInBackgroundWithBlock:^(NSArray *requests, NSError *error) {
+        for(PFObject *request in requests) {
+            NSMutableDictionary *response = [[NSMutableDictionary alloc]init];
+            
+            NSArray *requests = @[request];
+            
+            [response setObject:request[@"routeId"] forKey:@"routeInfo"];
+            [response setObject:requests forKey:@"requestInfo"];
+            [responseArray addObject:response];
+        }
+        callback(responseArray, nil);
+    }];
 
 }
 
