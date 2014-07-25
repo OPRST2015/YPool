@@ -60,6 +60,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="poolCellBackgroundImage" destination="OA7-ck-6Xl" id="R63-w6-mK9"/>
                 <outlet property="poolDestination" destination="yZ8-52-LT9" id="0fF-f2-qGP"/>
                 <outlet property="poolPassengers" destination="n6y-8y-w7p" id="Iqg-mj-Uk0"/>
                 <outlet property="poolSelectedImageView" destination="6MF-Qc-KKM" id="g3b-SD-oJz"/>
