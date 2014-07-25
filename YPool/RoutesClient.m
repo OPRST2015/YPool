@@ -97,7 +97,32 @@
 }
 
 - (NSDictionary *)convertPFObjectToDisctionary:(PFObject *)route {
-    NSMutableDictionary *d;
+
+    NSString *routeD = route[@"routeDetail"];
+    
+    NSDictionary *info = [NSJSONSerialization
+                          JSONObjectWithData:[routeD dataUsingEncoding:NSUTF8StringEncoding]
+                          options:(NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves)
+                          error:nil];
+    
+    NSDate *date = route[@"startTime"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    
+    PFUser * user = route[@"driverUser"];
+    NSString *name = user[@"name"];
+    NSString *phone = user[@"phone"];
+    NSDictionary * d = @{@"routeDetail" : info,
+                                @"source" : route[@"startPlace"],
+                                @"destination" : route[@"endPlace"],
+                                @"time" :  stringFromDate,
+                                @"seats" : [NSString stringWithFormat:@"%@ Seats",route[@"numberOfSeats"]],
+                         @"name" : name,
+                         @"phone" : phone
+                                };
+    //NSLog(@"New Dictionary: %@", d);
     return [d copy];
 }
 

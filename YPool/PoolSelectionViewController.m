@@ -7,6 +7,7 @@
 //
 
 #import "PoolSelectionViewController.h"
+#import "GoogleMapViewService.h"
 
 @interface PoolSelectionViewController ()
 @property (weak, nonatomic) IBOutlet UIView *mapView;
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneText;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeText;
 - (IBAction)onNextButton:(id)sender;
+
+//@property (nonatomic, strong) GoogleMapViewService *gmv;
 
 @end
 
@@ -25,6 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+//        self.gmv = [[GoogleMapViewService alloc] init];
+//        self.gmv.delegate = self;
     }
     return self;
 }
@@ -32,6 +37,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.nameText.text = self.selectedPool[@"name"];
+    self.phoneText.text = self.selectedPool[@"phone"];
+    self.startTimeText.text = self.selectedPool[@"time"];
+    self.seatText.text = self.selectedPool[@"seats"];
+    
+//    [self.mapView addSubview:[self.gmv getInitialViewWithFrame:self.mapView]];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -43,5 +55,7 @@
 }
 
 - (IBAction)onNextButton:(id)sender {
+    
+    
 }
 @end
