@@ -61,7 +61,7 @@
 - (IBAction)onNextButton:(id)sender {
     
     RoutesClient *routesClient = [RoutesClient instance];
-    [routesClient postNewRequest:self.selectedPool[@"rawRoute"] callback:^(BOOL succeeded, NSError *error) {
+    [routesClient postNewRequest:self.selectedPool[@"routeObject"] callback:^(BOOL succeeded, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Request Submitted!"
                                                             message:[error localizedDescription]
                                                            delegate:nil
