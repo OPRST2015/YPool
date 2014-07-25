@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YPool/RideTableViewCell.m"
-            timestampString = "427968193.718119"
+            timestampString = "427973344.354419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "-awakeFromNib"
             landmarkType = "5">
          </BreakpointContent>
