@@ -52,6 +52,8 @@
 
 - (IBAction)saveRoute:(id)sender {
     PFUser *currentUser = [PFUser currentUser];
+    NSString *jsonString;
+
     
     // save published route object
     PFObject *route = [PFObject objectWithClassName:@"publishedRoute"];
@@ -59,10 +61,21 @@
     route[@"startTime"] = [self.startTimePicker date];
     route[@"routeDetail"] = @"this is the route detail";
     route[@"numberOfSeats"] = @([self.numberOfSeatsField.text intValue]);
-    PFGeoPoint *startPoint = [PFGeoPoint geoPointWithLatitude:37.37 longitude:-122.03];
-    route[@"startPoint"] = startPoint;
-    route[@"startPlace"] = @"Sunnyvale, CA";
-    route[@"endPlace"] = @"Mountain View, CA";
+    route[@"startPlace"] = self.selectedRoute[@"legs"][0][@"start_address"];
+    route[@"endPlace"] = self.selectedRoute[@"legs"][0][@"end_address"];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.selectedRoute
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+       jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    route[@"routeDetail"] = jsonString;
+
     
     [route saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
@@ -70,18 +83,46 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
     }];
     
+    
+    NSString *startLatString = self.selectedRoute[@"legs"][0][@"start_location"][@"lat"];
+    float startLat = [startLatString floatValue];
+    NSString *startLongString = self.selectedRoute[@"legs"][0][@"start_location"][@"long"];
+    float startLong = [startLongString floatValue];
+    NSString *endLatString = self.selectedRoute[@"legs"][0][@"end_location"][@"lat"];
+    float endLat = [endLatString floatValue];
+    NSString *endLongString = self.selectedRoute[@"legs"][0][@"end_location"][@"long"];
+    float endLong = [endLongString floatValue];
+
+    
     // save routeEndPoint object (to ease querying)
-    PFObject *routeEndPoint = [PFObject objectWithClassName:@"routeEndPoint"];
+    PFObject *routeStartPoint = [PFObject objectWithClassName:@"geoPoints"];
+    PFGeoPoint *startPoint = [PFGeoPoint geoPointWithLatitude:startLat longitude:startLong];
+    routeStartPoint[@"routeId"] = route;
+    routeStartPoint[@"geoPoint"] = startPoint;
+    routeStartPoint[@"startPoint"] = @(YES);
+    routeStartPoint[@"endPoint"] = @(NO);
+    
+    [routeStartPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // success
+        NSLog(@"saved start point");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"EndPointPublished" object:nil];
+    }];
+    
+    // save routeEndPoint object (to ease querying)
+    PFObject *routeEndPoint = [PFObject objectWithClassName:@"geoPoints"];
+    PFGeoPoint *endPoint = [PFGeoPoint geoPointWithLatitude:endLat longitude:endLong];
     
     routeEndPoint[@"routeId"] = route;
-    PFGeoPoint *endPoint = [PFGeoPoint geoPointWithLatitude:37.38 longitude:-122.08];
-    routeEndPoint[@"endPoint"] = endPoint;
+    routeEndPoint[@"geoPoint"] = endPoint;
+    routeEndPoint[@"startPoint"] = @(NO);
+    routeEndPoint[@"endPoint"] = @(YES);
+    
     [routeEndPoint saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
         NSLog(@"saved end point");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"EndPointPublished" object:nil];
     }];
-    
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
