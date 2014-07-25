@@ -74,6 +74,14 @@
     
     [routesClient getMatchingRoutes:@"Sunnyvale, CA" dest:@"Mountain View, CA" radius:20.0 callback:^(NSArray *objects, NSError *error) {
         NSLog(@"matched routes %@", objects);
+        if([objects count] > 0) {
+            RoutesClient *rc = [RoutesClient instance];
+            [rc postNewRequest:objects[0] callback:^(BOOL succeeded, NSError *error) {
+                if(succeeded) {
+                    NSLog(@"successfully posted request");
+                }
+            }];
+        }
     }];
     
     [self.poolTableView registerNib:[UINib nibWithNibName:@"PoolTableViewCell" bundle:nil] forCellReuseIdentifier:@"PoolTableViewCell"];
