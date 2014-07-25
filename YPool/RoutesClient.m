@@ -121,7 +121,8 @@
                                 @"seats" : [NSString stringWithFormat:@"%@ Seats",route[@"numberOfSeats"]],
                          @"name" : name,
                          @"phone" : phone,
-                         @"rawRoute" : route[@"routeDetail"]
+                         @"rawRoute" : route[@"routeDetail"],
+                         @"routeObject": route
                                 };
     //NSLog(@"New Dictionary: %@", d);
     return [d copy];
