@@ -92,13 +92,35 @@
             
         }];
     }];
-    
 }
 
-- (void) getMyRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
+- (void) getMyPublishedRoutes: (void (^)(NSArray *objects, NSError *error)) callback {
+    PFQuery *publishedRoutes = [PFQuery queryWithClassName:@"publishedRoute"];
+    [publishedRoutes includeKey:@"driverUser"];
+    PFUser *currentUser = [PFUser currentUser];
+    NSMutableDictionary *response = [[NSMutableDictionary alloc]init];
+
+    [publishedRoutes whereKey:@"driverUser" equalTo:currentUser];
     
-    
+    [publishedRoutes findObjectsInBackgroundWithBlock:^(NSArray *routes, NSError *error) {
+        // NSLog(@"routes are %@", routes);
+        NSMutableArray *routeIds = [[NSMutableArray alloc] init];
+        PFQuery *liftRequestQuery = [PFQuery queryWithClassName:@"liftRequest"];
+        for(PFObject *route in routes) {
+            // NSLog(@"route is %@", route.objectId);
+            [liftRequestQuery whereKey:@"routeId" equalTo:route];
+            NSArray *requests = [liftRequestQuery findObjects];
+            // NSLog(@"requests for route:  %@, %@", route.objectId, requests);
+            
+            [response setObject:route forKey:@"routeInfo"];
+            [response setObject:requests forKey:@"requestInfo"];
+            callback(response, nil);
+        }
+    }];
 }
 
+- (void) getMyRequests: (void (^)(NSArray *objects, NSError *error)) callback {
+
+}
 
 @end
