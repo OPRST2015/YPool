@@ -39,6 +39,9 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
+    
     self.nameText.text = self.selectedPool[@"name"];
     self.phoneText.text = self.selectedPool[@"phone"];
     self.startTimeText.text = self.selectedPool[@"time"];
