@@ -107,7 +107,7 @@
     
     NSDate *date = route[@"startTime"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"hh:mm"];
+    [formatter setDateFormat:@"EEE hh:mm"];
     
     NSString *stringFromDate = [formatter stringFromDate:date];
     
