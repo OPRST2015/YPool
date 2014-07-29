@@ -11,6 +11,7 @@
 #import "RideHeaderCell.h"
 #import "RideTableViewCell.h"
 #import "RideEmptyTableViewCell.h"
+#import "MBProgressHUD.h"
 
 @interface ShowRidesController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,17 +43,23 @@
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"carpool-title.png"]];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStylePlain target:self action:@selector(goToHome)];
 
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [UITabBarItem.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blueColor] }    forState:UIControlStateSelected];
     self.headerLabel.text = self.type;
     RoutesClient *rc = [RoutesClient instance];
     if ([self.type isEqualToString:@"Rides"]) {
+        hud.labelText = @"Fetching Rides";
         [rc getMyPublishedRoutes:^(NSArray *objects, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             self.rides = objects;
             NSLog(@"%@", self.rides);
             [self.tableView reloadData];
         }];
     } else {
+        hud.labelText = @"Fetching Requests";
         [rc getMyRequestedRoutes:^(NSArray *objects, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             self.rides = objects;
             NSLog(@"%@", self.rides);
             [self.tableView reloadData];

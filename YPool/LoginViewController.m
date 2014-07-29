@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <Parse/PFUser.h>
 #import "SignupViewController.h"
+#import "MBProgressHUD.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -83,10 +84,13 @@
     PFUser *user = [PFUser user];
     user.username = self.usernameTextField.text;
     user.password = self.passwordTextField.text;
-    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Logging in";
+
     
     [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text
                                     block:^(PFUser *user, NSError *error) {
+                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                                         if (user) {
                                             NSLog(@"logged in");
                                             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];

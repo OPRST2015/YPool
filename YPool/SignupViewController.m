@@ -8,6 +8,7 @@
 
 #import "SignupViewController.h"
 #import <Parse/PFUser.h>
+#import "MBProgressHUD.h"
 
 @interface SignupViewController ()
 
@@ -64,15 +65,17 @@
     user.password = self.passwordTextField.text;
     user[@"name"] = self.nameTextField.text;
     user[@"phone"] = self.phoneTextField.text;
-    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Signing up";
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"succeeded sign-up");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStateChanged" object:nil];
             
         } else {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             // NSString *errorString = [error userInfo][@"error"];
             // Show the errorString somewhere and let the user try again.
             NSLog(@"failed sign-up., %@", error);

@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "RoutesClient.h"
 #import "PoolTableViewCell1.h"
+#import "MBProgressHUD.h"
 
 @interface PassengerViewController ()
 
@@ -63,8 +64,11 @@
 - (void)getMatchingRoutesData {
     if (![self.sourceTextField.text isEqualToString:@""] && ![self.destinationTextField.text isEqualToString:@""]) {
         RoutesClient *routesClient = [RoutesClient instance];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Fetching Routes";
         
         [routesClient getMatchingRoutes:self.sourceTextField.text dest:self.destinationTextField.text radius:5.0 callback:^(NSArray *objects, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             if ([objects count]) {
                 self.noRoutesFound = NO;

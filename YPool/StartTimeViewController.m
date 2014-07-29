@@ -8,6 +8,7 @@
 
 #import "StartTimeViewController.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface StartTimeViewController ()
 - (IBAction)saveRoute:(id)sender;
@@ -77,10 +78,12 @@
        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
     route[@"routeDetail"] = jsonString;
-
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Saving Route";
     
     [route saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // success
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSLog(@"saved route");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"RoutePublished" object:nil];
     }];
